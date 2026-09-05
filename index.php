@@ -16,7 +16,7 @@ $title = "Gamora's Gaming Cafe";
     <header class="site-header">
         <div class="nav-container">
             <a href="#home" class="brand-logo">
-                <img src="logo.png" alt="Gamora's Gaming Cafe">
+                <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe">
             </a>
 
             <nav class="nav-links">

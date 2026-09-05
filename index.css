@@ -37,7 +37,7 @@ footer {
     
     /* Responsive Background Image & Overlay */
     background-image: linear-gradient(rgba(5, 20, 50, 0.4), rgba(5, 20, 50, 0.7)), 
-                      url('GamerBckg.png');
+                      url('image_GamingCafe/GamerBckg.png');
     background-repeat: no-repeat;
     background-position: center 10%;
     background-size: cover;
