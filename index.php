@@ -13,23 +13,25 @@ $title = "Gamora's Gaming Cafe";
 <!-- Hero Container with Embedded Scalable Image -->
 <div class="hero-wrapper">
     <!-- Fixed Navigation Bar -->
-    <header class="site-header">
-        <div class="nav-container">
-            <a href="#home" class="brand-logo">
-                <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe">
-            </a>
+<header class="site-header">
+    <div class="nav-container">
+        <a href="#home" class="brand-logo">
+            <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe">
+        </a>
 
-            <nav class="nav-links">
-                <a href="#home">HOME</a>
-                <a href="#pcs">PCs</a>
-                <a href="#rates">RATES</a>
-                <a href="#events">EVENTS</a>
-                <a href="#contact">CONTACT</a>
-                <a href="#about">ABOUT US</a>
-                <a href="#book" class="nav-btn">BOOK NOW</a>
-            </nav>
-        </div>
-    </header>
+        <nav class="nav-links">
+            <a href="#home">HOME</a>
+            <a href="#pcs">PCs</a>
+            <a href="#rates">RATES</a>
+            <a href="#events">EVENTS</a>
+            <a href="#contact">CONTACT</a>
+            <a href="#about">ABOUT US</a>
+            
+            <!-- Primary Auth Action -->
+            <a href="#" class="auth-btn" id="openAuthBtn">SIGN IN / SIGN UP</a>
+        </nav>
+    </div>
+</header>
 
     <!-- Main Hero Body -->
     <div class="hero-body">
@@ -60,7 +62,7 @@ $title = "Gamora's Gaming Cafe";
                 <li><span class="bullet">•</span> RTX Gaming PCs</li>
                 <li><span class="bullet">•</span> Gaming Consoles</li>
                 <li><span class="bullet">•</span> Fast Fiber Internet</li>
-                <li><span class="bullet">•</span> Tournaments & Events</li>
+                <li> &emsp; &nbsp; • Tournaments & Events</li>
             </ul>
         </div>
 
@@ -302,7 +304,7 @@ $title = "Gamora's Gaming Cafe";
             
             <!-- Logo Section -->
             <div class="footer-brand">
-                <img src="logo.png" alt="Gamora's Gaming Cafe" class="footer-logo">
+                <img src="image_Gamingcafe/logo.png" alt="Gamora's Gaming Cafe" class="footer-logo">
             </div>
 
             <!-- Links Grid -->

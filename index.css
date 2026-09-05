@@ -30,12 +30,13 @@ footer {
 
 .hero-wrapper {
     width: 100%;
-    min-height: 80vh; /* Prevents height collapsing when zoomed */
+    /* Cap max height to prevent full-screen ballooning at low zoom */
+    height: clamp(500px, 70vh, 750px); 
     position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    
-    /* Responsive Background Image & Overlay */
+    justify-content: space-between;
     background-image: linear-gradient(rgba(5, 20, 50, 0.4), rgba(5, 20, 50, 0.7)), 
                       url('image_GamingCafe/GamerBckg.png');
     background-repeat: no-repeat;
@@ -44,39 +45,51 @@ footer {
 }
 
 /* Header Navigation Bar */
+/* ================= HEADER & NAV FIX ================= */
+
 .site-header {
     width: 100%;
-    padding: 25px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
     z-index: 100;
+    padding: 20px 0; /* Use stable px instead of fluid padding */
 }
 
 .nav-container {
-    max-width: 1100px;
+    width: 100%;
+    max-width: 1280px; /* Locks maximum layout width at extreme zoom out */
     margin: 0 auto;
-    padding: 0 20px;
+    padding: 0 32px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-sizing: border-box;
 }
 
+/* Fixed-size Logo so it doesn't inflate on zoom */
 .brand-logo img {
-    height: 48px;
+    height: 48px; /* Hard limit prevents massive logo scaling */
     width: auto;
     object-fit: contain;
+    display: block;
 }
 
+/* Nav Links Container */
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 24px; /* Fixed gap keeps items positioned consistently */
 }
 
+/* Stable Typography */
 .nav-links a {
     color: #ffffff;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 14px; /* Hardcoded pixel value prevents micro-text at 25% zoom */
     font-weight: 700;
     letter-spacing: 0.8px;
+    white-space: nowrap; /* Keeps links from wrapping or squishing */
     transition: color 0.2s ease;
 }
 
@@ -84,14 +97,32 @@ footer {
     color: #00d2ff;
 }
 
+/* Navigation Buttons */
 .nav-btn {
     background-color: #00d2ff !important;
     color: #051432 !important;
     padding: 10px 22px;
     border-radius: 50px;
     font-weight: 800 !important;
-    letter-spacing: 0.5px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.auth-btn {
+    display: inline-block;
+    background-color: #00d2ff;
+    color: #051432 !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 800 !important;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    background-color: #ffffff;
 }
 
 .nav-btn:hover {
@@ -156,6 +187,30 @@ footer {
     transform: translateY(-3px);
     box-shadow: 0 8px 20px rgba(0, 210, 255, 0.4);
     background-color: #ffffff;
+}
+
+/* ================= SIGN IN / SIGN UP BUTTON ================= */
+
+.auth-btn {
+    display: inline-block;
+    background-color: transparent;
+    color: #00d2ff !important;
+    border: 2px solid #00d2ff;
+    padding: 8px 20px;
+    border-radius: 50px;
+    font-weight: 800 !important;
+    font-size: 13px;
+    letter-spacing: 0.8px;
+    text-decoration: none;
+    transition: all 0.25s ease !important;
+    cursor: pointer;
+}
+
+.auth-btn:hover {
+    background-color: #00d2ff;
+    color: #051432 !important;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+    transform: translateY(-2px);
 }
 
 /* ================= WHY CHOOSE US ================= */
