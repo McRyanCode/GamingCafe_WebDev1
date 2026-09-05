@@ -1,0 +1,1119 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    color: white;
+    background-color: #051432;
+}
+
+/* ================= CONTAINER FOR SIDE SPACING ================= */
+.navbar,
+.hero-content,
+.why-choose-us,
+.news,
+.price,
+.events,
+.contact,
+footer {
+    padding-left: 6%;
+    padding-right: 6%;
+}
+
+/* ================= HERO HEADER (SCALABLE BANNER) ================= */
+
+/* ================= HERO & NAVBAR (FLUID ZOOM) ================= */
+
+.hero-wrapper {
+    width: 100%;
+    min-height: 80vh; /* Prevents height collapsing when zoomed */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    
+    /* Responsive Background Image & Overlay */
+    background-image: linear-gradient(rgba(5, 20, 50, 0.4), rgba(5, 20, 50, 0.7)), 
+                      url('GamerBckg.png');
+    background-repeat: no-repeat;
+    background-position: center 10%;
+    background-size: cover;
+}
+
+/* Header Navigation Bar */
+.site-header {
+    width: 100%;
+    padding: 25px 0;
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-logo img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.nav-links a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #00d2ff;
+}
+
+.nav-btn {
+    background-color: #00d2ff !important;
+    color: #051432 !important;
+    padding: 10px 22px;
+    border-radius: 50px;
+    font-weight: 800 !important;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+}
+
+.nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 210, 255, 0.4);
+}
+
+/* Hero Content Area - Natural Flex Flow */
+.hero-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 60px 0 100px 0; /* Ensures vertical spacing never collapses */
+}
+
+.hero-container {
+    max-width: 1100px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.hero-content {
+    max-width: 600px;
+    text-align: left;
+}
+
+.hero-content h1 {
+    color: #ffffff;
+    font-size: clamp(32px, 5vw, 52px); /* Fluid typography based on screen width */
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 2px;
+    margin-bottom: 35px;
+}
+
+.cyan-text {
+    color: #00d2ff;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap; /* Keeps buttons legible on extreme zoom */
+}
+
+.hero-btn {
+    display: inline-block;
+    background-color: #00d2ff;
+    color: #051432;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    padding: 14px 32px;
+    border-radius: 50px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+
+.hero-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.4);
+    background-color: #ffffff;
+}
+
+/* ================= WHY CHOOSE US ================= */
+
+/* ================= WHY CHOOSE US ================= */
+
+.why-choose-us {
+    width: 100%;
+    min-height: 500px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background: white; /* Set to #ffffff if your teacher requested a light background */
+    color: white;
+}
+
+/* ================= WHY CHOOSE US ================= */
+
+.why-choose-container {
+    display: flex;
+    justify-content: space-between; /* Forces left content to far-left & right content to far-right */
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;              /* Expanded from 1000px to give more side-to-side room */
+    margin: 0 auto;
+    gap: 100px;                     /* Increased gap from 50px to 100px */
+    padding: 0 20px;
+}
+
+/* Left Content Column */
+.why-choose-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;        /* Aligns title and pills neatly to the left edge */
+}
+
+/* Right Media Column */
+.why-choose-media {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;      /* Anchors the image cluster to the far right */
+    align-items: center;
+}
+
+/* Title alignment and spacing above pills */
+.why-choose-content h2 {
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    margin-top: 0;
+    margin-bottom: 45px;  /* Increased gap between the title and the first pill */
+    text-align: center;
+    width: 100%;
+    max-width: 360px;     /* Matches pill width so title sits centered right above them */
+}
+
+/* Capsule Pills List */
+.feature-pills {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 360px; /* Controls pill width */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-pills li {
+    background-color: #434c6d;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px; /* Fully rounded capsule shape */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.feature-pills .bullet {
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Right Media Column: 4-Device Composition */
+.why-choose-media {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2x2 Grid container grouping all 4 devices */
+.devices-cluster {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 460px;
+    width: 100%;
+    align-items: center;
+    justify-items: center;
+}
+
+/* Base style for each individual device image */
+.devices-cluster .device {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+    transition: transform 0.3s ease;
+}
+
+/* Slight position offsets to overlap & blend them naturally */
+.device-1 {
+    transform: translateY(10px);
+}
+
+.device-2 {
+    transform: translateX(-15px);
+}
+
+.device-3 {
+    transform: translateY(-10px);
+}
+
+.device-4 {
+    transform: translateX(-10px);
+}
+
+.devices-cluster .device:hover {
+    transform: scale(1.05);
+    z-index: 5;
+}
+
+/* Capsule Pills List Base Styles */
+.feature-pills li {
+    background-color: #434c6d;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+    padding: 14px 28px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    cursor: pointer;
+    
+    /* Adds smooth motion animation */
+    transition: transform 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover Effect: Shifts pill right and slightly up with glow */
+.feature-pills li:hover {
+    transform: translateX(10px) translateY(-2px); /* Moves pill right & up */
+    background-color: #00d2ff;                     /* Highlights pill cyan */
+    color: #051432;                               /* Switches text color for high contrast */
+    box-shadow: 0 8px 20px rgba(0, 210, 255, 0.4); /* Adds vibrant glow */
+}
+
+/* ================= FEATURED GAMES ================= */
+
+/* Container holding all cards */
+/* Container adjusted for 4 cards */
+/* ================= PLAYSTATION-STYLE FEATURED GAMES CAROUSEL ================= */
+
+.featured-games {
+    background-color: #051432;
+    padding-top: clamp(50px, 5vw, 80px);
+    padding-bottom: clamp(50px, 5vw, 80px);
+    width: 100%;
+}
+
+.featured-games h2 {
+    font-size: clamp(26px, 3.5vw, 36px);
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #ffffff;
+}
+
+/* Carousel Container Wrapper */
+.carousel-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+
+/* Scroll Track with Native Snap */
+.games-carousel {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    padding: 10px 5px 20px 5px;
+    
+    /* Hide scrollbar visually while retaining touch/mouse scroll functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.games-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+/* Individual Card (Horizontal Aspect Ratio) */
+.game-card {
+    flex: 0 0 clamp(260px, 30vw, 320px); /* Sets responsive width per card */
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-6px);
+}
+
+.game-img-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Wide horizontal media format like the PlayStation site */
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.game-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.game-card:hover .game-img {
+    transform: scale(1.05);
+}
+
+/* Text Details Below Card */
+.game-info {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.game-tag {
+    font-size: 12px;
+    font-weight: 700;
+    color: #00d2ff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.game-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.3;
+}
+
+.game-desc {
+    font-size: 13px;
+    font-weight: 500;
+    color: #a0aec0;
+    line-height: 1.4;
+}
+
+/* Circular Scroll Buttons */
+.scroll-btn {
+    position: absolute;
+    top: 35%; /* Centered against the image height */
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #051432;
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.scroll-btn:hover {
+    background-color: #00d2ff;
+    color: #051432;
+    transform: translateY(-50%) scale(1.1);
+}
+
+.left-btn {
+    left: -15px;
+}
+
+.right-btn {
+    right: -15px;
+}
+
+/* Adjust button placement for smaller screens */
+@media (max-width: 768px) {
+    .left-btn { left: 5px; }
+    .right-btn { right: 5px; }
+}
+
+/* ================= FEATURED GAMES ================= */
+
+.featured-games {
+    width: 100%;
+    /* Increased top padding from 40px/60px to 100px to push title away from the top edge */
+    padding: 100px 6% 80px 6%; 
+    background-color: #051432; /* Matches main dark theme */
+    color: #ffffff;
+    box-sizing: border-box;
+}
+
+/* Section Title Wrapper */
+.featured-games h2 {
+    font-size: 36px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    text-align: center;
+    /* Generous bottom margin to separate title from game cards below */
+    margin-top: 0;
+    margin-bottom: 50px; 
+}
+
+/* Optional Grid/Flex container for game cards */
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* ================= HOVER & BLUR EFFECTS ================= */
+
+/* 1. Blur and dim all cards when hovering over the grid */
+/* .games-grid:hover .game-card {
+    filter: blur(4px) brightness(0.6);
+    transform: scale(0.95);
+} */
+
+/* 2. Un-blur, scale up, and reveal description on the targeted card */
+.games-grid .game-card:hover {
+    filter: blur(0) brightness(1) !important;
+    transform: scale(1.05) !important;
+    z-index: 5;
+}
+
+/* Reveal the overlay description on hover */
+.game-card:hover .game-overlay {
+    opacity: 1;
+}
+
+/* Active card state (for clicks / touch devices) */
+.games-grid:has(.game-card.active) .game-card:not(.active) {
+    filter: blur(4px) brightness(0.6);
+    transform: scale(0.95);
+}
+
+.game-card.active {
+    filter: blur(0) brightness(1) !important;
+    transform: scale(1.05) !important;
+    z-index: 5;
+}
+
+.game-card.active .game-overlay {
+    opacity: 1;
+}
+
+/* ================= PRICE / PRICING REVIEW ================= */
+
+/* ================= PRICING REVIEW ================= */
+
+.pricing {
+    position: relative;
+    background-color: #ffffff; /* Clean white background from mockup */
+    color: #000000;
+    padding: 60px 0 80px 0;
+    text-align: center;
+    overflow: hidden;          /* Keeps headset image bound cleanly */
+}
+
+.pricing h2 {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 50px;
+}
+
+/* Three Card Container Grid */
+.pricing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2; /* Keeps cards above headset asset */
+}
+
+/* Pricing Card Styles */
+.price-card {
+    background-color: #434c6d;
+    width: 260px;
+    height: 310px;
+    border-radius: 35px;       /* Smooth rounded box corners */
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.price-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(5, 20, 50, 0.3);
+}
+
+/* Typography Inside Cards */
+.tier-title {
+    color: #00d2ff;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.duration {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.price {
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.currency {
+    font-size: 28px;
+    font-weight: 700;
+    margin-right: 4px;
+}
+
+/* Button Pill Styling */
+.reserve-btn {
+    background-color: #d1d5db;
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 10px 24px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+.reserve-btn:hover {
+    background-color: #00d2ff;
+    color: #051432;
+}
+
+/* Headset Image Pop-out (Bottom-Right) */
+.headset-popout {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    width: 280px;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================= EVENTS AND TOURNAMENTS ================= */
+
+/* ================= EVENTS & TOURNAMENTS ================= */
+
+.events-section {
+    position: relative;
+    background-color: #030e26; /* Dark navy background */
+    color: #ffffff;
+    padding: 80px 0;
+    overflow: hidden;          /* Clips peripheral pop-outs cleanly */
+}
+
+/* Container matching global width alignment */
+.events-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 60px;
+    position: relative;
+    z-index: 2; /* Keeps text and main card above decorative graphics */
+}
+
+/* Left Column: Text & CTA */
+.events-info {
+    flex: 1;
+    max-width: 440px;
+}
+
+.events-info h2 {
+    font-size: 32px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+    margin-bottom: 24px;
+}
+
+.events-info p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 30px;
+}
+
+/* Capsule Pill Button */
+.view-events-btn {
+    display: inline-block;
+    background-color: #d1d5db;
+    color: #000000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 800;
+    padding: 12px 28px;
+    border-radius: 50px;
+    letter-spacing: 0.5px;
+    transition: background-color 0.25s ease, color 0.25s ease, transform 0.25s ease;
+}
+
+.view-events-btn:hover {
+    background-color: #00d2ff;
+    color: #051432;
+    transform: translateY(-2px);
+}
+
+/* Right Column: Rounded Image Card */
+.events-card {
+    flex: 1.2;
+    max-width: 500px;
+    border-radius: 35px; /* Matches rounded card shape from mockup */
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+}
+
+.events-banner {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --- Decorative Peripheral Assets --- */
+
+/* Bottom-Left Angled Keyboard */
+.peripheral-keyboard {
+    position: absolute;
+    bottom: -40px;
+    left: -50px;
+    width: 260px;
+    height: auto;
+    transform: rotate(20deg);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Top-Right Hanging Headset */
+.peripheral-headset {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 220px;
+    height: auto;
+    z-index: 3; /* Rendered over the top-right corner of the banner card */
+    pointer-events: none;
+}
+
+/* ================= EVENTS & CONTACT (IDENTICAL LAYOUTS) ================= */
+
+
+/* ================= CONTACT & MAP ================= */
+
+.contact-section {
+    position: relative;
+    background-color: #ffffff; /* Clean white background */
+    color: #000000;
+    padding: 80px 0;
+    overflow: hidden;
+}
+
+/* Container matching global structural layout */
+.contact-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 120px;
+    position: relative;
+    z-index: 2;
+}
+
+/* Right Column details spacing */
+.contact-info {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    padding-left: 20px; /* Adds extra breathing room on the left side of the text */
+}
+
+/* Left Column: Map Container with Rounded Corners */
+.map-card {
+    flex: 1;
+    max-width: 420px;
+    height: 320px;
+    border-radius: 25px; /* Matches rounded map card from mockup */
+    overflow: hidden;
+    /* box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); */
+}
+
+.map {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* .map-card iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+} */
+
+/* Right Column: Address & Details */
+.contact-info {
+    flex: 1;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.contact-info h2 {
+    font-size: 32px;
+    font-weight: 800;
+    margin-bottom: 25px;
+    color: #000000;
+}
+
+.contact-info p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #2d3748;
+    margin: 0 0 16px 0;
+}
+
+.contact-info .cafe-name {
+    font-weight: 700;
+}
+
+.contact-info .hours {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* Top-Left Corner Keyboard Graphic Bleed */
+.contact-keyboard {
+    position: absolute;
+    top: -30px;
+    left: -40px;
+    width: 220px;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* ================= ABOUT US ================= */
+
+/* ================= ABOUT US ================= */
+
+.about-section {
+    background-color: #030e26; /* Dark navy background matching mockup */
+    color: #ffffff;
+    padding: 80px 0;
+    width: 100%;
+}
+
+/* Container locking horizontal width with rest of page */
+.about-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    gap: 60px;
+}
+
+/* Left Content Column */
+.about-content {
+    flex: 1.2;
+    max-width: 500px;
+}
+
+.about-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+/* White Accent Line */
+.vertical-bar {
+    width: 4px;
+    height: 28px;
+    background-color: #ffffff;
+    display: inline-block;
+    border-radius: 2px;
+}
+
+.about-title-wrap h2 {
+    font-size: 28px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.about-description {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin: 0;
+}
+
+.highlight-cyan {
+    color: #00d2ff; /* Cyan accent matching mockup */
+    font-weight: 600;
+}
+
+/* Right Media Column */
+.about-media {
+    flex: 0.8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Dark Slate Background Card */
+.character-card {
+    position: relative;
+    background-color: #434c6d;
+    width: 240px;
+    height: 200px;
+    border-radius: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* Character Pop-out Effect */
+.character-img {
+    position: absolute;
+    bottom: 0;
+    height: 250px; /* Taller than card so head pops out top */
+    width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4));
+}
+
+/* footer */
+
+
+/* ================= FOOTER ================= */
+
+.site-footer {
+    background-color: #030e26; /* Dark navy background */
+    color: #ffffff;
+    padding: 40px 0 30px 0;
+    width: 100%;
+}
+
+.footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Horizontal Lines */
+.footer-divider {
+    border: none;
+    border-top: 1px solid #23345e;
+    margin: 25px 0;
+}
+
+/* Main Grid Layout */
+.footer-main-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 10px 0;
+}
+
+.footer-brand {
+    flex: 1;
+    max-width: 220px;
+}
+
+.footer-logo {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Spaced Link Columns */
+.footer-links-wrapper {
+    flex: 2.5;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Left-aligns texts inside columns as in mockup */
+}
+
+.footer-col h3 {
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+    margin-bottom: 18px;
+    color: #ffffff;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #00d2ff;
+}
+
+/* Bottom Row Alignment */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.footer-bottom p {
+    color: #d1d5db;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* Social Image Icons */
+.social-icons {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-icons img {
+    width: 32px; /* Prominent white icons matching mockup */
+    height: 32px;
+    object-fit: contain;
+    filter: brightness(0) invert(1); /* Forces icons to solid white */
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    opacity: 0.8;
+}
+
+/* ================= FOOTER BIG LOGO DECORATION ================= */
+
+/* Ensure the parent site-footer is positioned relative so absolute works */
+.site-footer {
+    position: relative; 
+    overflow: hidden; /* Clips the oversized logo so it doesn't break layout */
+    /* ... rest of existing footer styles ... */
+}
+
+.footer-bg-logo {
+    position: absolute;
+    bottom: -50px;     /* Positioned so it bleeds off the bottom */
+    right: 5px;     /* Positioned so it bleeds off the far right */
+    
+    width: 350px;      /* Large size requested */
+    height: auto;
+    object-fit: contain;
+    
+    opacity: 0.5;      /* Key: Creates the very subtle, ghosted, faded look */
+    z-index: 1;        /* Sits on the lowest layer */
+    pointer-events: none; /* Prevents clicks on the invisible background element */
+    
+    transform: rotate(0deg); /* Slight angle for dynamic placement, optional */
+    filter: blur(1px);       /* Slight softening, also optional but adds to the look */
+}
+
+/* Ensure other footer content sits above the faded logo */
+.footer-container {
+    position: relative;
+    z-index: 2; /* Content sits on top of z-index 1 logo */
+    /* ... rest of existing styles ... */
+}
+
