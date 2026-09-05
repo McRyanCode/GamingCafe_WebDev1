@@ -79,7 +79,7 @@ $title = "Gamora's Gaming Cafe";
 
     <!-- Featured Games -->
   <section class="featured-games" id="games">
-    <h2>FEATURED GAMES</h2>
+    <h2><span style="color:#00d2ff">FEATURED</span> GAMES</h2>
     
     <div class="carousel-wrapper">
         <button class="scroll-btn left-btn" id="scrollLeft" aria-label="Scroll Left">&#10094;</button>
@@ -281,7 +281,7 @@ $title = "Gamora's Gaming Cafe";
         <!-- Right Column: Card Frame & Character Pop-out -->
         <div class="about-media">
             <div class="character-card">
-                <img src="minecraft-character.png" alt="Minecraft Character" class="character-img">
+                <img src="image_GamingCafe/minechr.png" alt="Minecraft Character" class="character-img">
             </div>
         </div>
 
@@ -352,10 +352,10 @@ $title = "Gamora's Gaming Cafe";
             <p>© 2026 GGs Gaming Cafe. All Rights Reserved</p>
             
             <div class="social-icons">
-                <a href="#"><img src="discord-icon.png" alt="Discord"></a>
-                <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="x-icon.png" alt="X"></a>
-                <a href="#"><img src="tiktok-icon.png" alt="TikTok"></a>
+                <a href="#"><img src="image_GamingCafe/discord-icon.png" alt="Discord"></a>
+                <a href="#"><img src="image_GamingCafe/facebook-icon.png" alt="Facebook"></a>
+                <a href="#"><img src="image_GamingCafe/x-icon.png" alt="X"></a>
+                <a href="#"><img src="image_GamingCafe/tiktok-icon.png" alt="TikTok"></a>
             </div>
         </div>
 

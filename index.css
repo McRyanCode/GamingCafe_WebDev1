@@ -356,14 +356,9 @@ footer {
 .games-carousel {
     display: flex;
     gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
+    overflow-x: hidden; /* Hides horizontal scrollbar and locks smooth JS movement */
+    scroll-behavior: auto; /* Handled via JavaScript smooth scroll */
     padding: 10px 5px 20px 5px;
-    
-    /* Hide scrollbar visually while retaining touch/mouse scroll functionality */
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
 }
 
 .games-carousel::-webkit-scrollbar {
