@@ -1,0 +1,279 @@
+/* ================= GITHUB-STYLE AUTH MODAL ================= */
+
+.auth-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 20, 50, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+}
+
+.auth-modal-overlay.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.auth-card {
+    background-color: #0b1d3a;
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 12px;
+    width: 100%;
+    max-width: 340px;
+    padding: 28px 24px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    position: relative;
+    text-align: center;
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    color: #a0aec0;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.modal-close-btn:hover {
+    color: #ffffff;
+}
+
+.auth-logo {
+    height: 40px;
+    width: auto;
+    margin-bottom: 12px;
+}
+
+.auth-header h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    font-size: 12px;
+    color: #00d2ff;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px 12px;
+    background-color: #051432;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 6px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-group input:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.25);
+}
+
+.auth-submit-btn {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    background-color: #00d2ff;
+    color: #051432;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.auth-submit-btn:hover {
+    background-color: #33d9ff;
+}
+
+.auth-submit-btn:active {
+    transform: scale(0.98);
+}
+
+.auth-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 12px;
+    color: #a0aec0;
+}
+
+.auth-footer a {
+    color: #00d2ff;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ================= NAV CONTROLS & DROPDOWN ================= */
+
+.nav-auth-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: 15px;
+}
+
+.auth-buttons-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-btn-secondary {
+    background: transparent;
+    color: #00d2ff;
+    border: 1px solid #00d2ff;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn-secondary:hover {
+    background: rgba(0, 210, 255, 0.15);
+}
+
+.nav-btn-primary {
+    background: #00d2ff;
+    color: #051432;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 50px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-btn-primary:hover {
+    background: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+/* Profile Icon & Dropdown */
+.profile-nav-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-icon-btn {
+    background: #051432;
+    border: 1.5px solid #00d2ff;
+    color: #00d2ff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.profile-icon-btn:hover {
+    background: #00d2ff;
+    color: #051432;
+}
+
+/* Controlled Dropdown State */
+.profile-card-dropdown {
+    display: none !important; /* Guard against layout leaking */
+    position: absolute;
+    top: 48px;
+    right: 0;
+    width: 240px;
+    background-color: #0b1d3a;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+    text-align: left;
+}
+
+.profile-card-dropdown.show {
+    display: flex !important;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Card Details Typography */
+.gamer-tag { display: block; font-size: 15px; font-weight: 800; color: #ffffff; }
+.station-badge { font-size: 11px; color: #00d2ff; font-weight: 600; }
+.session-info-box { background: #051432; border-radius: 6px; padding: 10px; display: flex; flex-direction: column; gap: 6px; }
+.session-row { display: flex; justify-content: space-between; font-size: 12px; color: #a0aec0; }
+.session-row strong { color: #ffffff; }
+.time-left { color: #00ff66; }
+.cyan-text { color: #00d2ff; }
+
+.logout-btn { 
+    width: 100%; 
+    padding: 8px; 
+    background: transparent; 
+    border: 1px solid #ff4d4d; 
+    color: #ff4d4d; 
+    border-radius: 6px; 
+    font-size: 12px; 
+    font-weight: 700; 
+    cursor: pointer; 
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logout-btn:hover { 
+    background: #ff4d4d; 
+    color: #ffffff; 
+}

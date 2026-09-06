@@ -6,6 +6,7 @@ $title = "Gamora's Gaming Cafe";
 <html>
 <head>
     <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="signIn.css">
     <link rel="stylesheet" href="index.css">
 </head>
 
@@ -19,17 +20,60 @@ $title = "Gamora's Gaming Cafe";
             <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe">
         </a>
 
-        <nav class="nav-links">
-            <a href="#home">HOME</a>
-            <a href="#pcs">PCs</a>
-            <a href="#rates">RATES</a>
-            <a href="#events">EVENTS</a>
-            <a href="#contact">CONTACT</a>
-            <a href="#about">ABOUT US</a>
-            
-            <!-- Primary Auth Action -->
-            <a href="#" class="auth-btn" id="openAuthBtn">SIGN IN / SIGN UP</a>
-        </nav>
+<nav class="nav-links">
+    <a href="#home">HOME</a>
+    <a href="#pcs">PCs</a>
+    <a href="#rates">RATES</a>
+    <a href="#events">EVENTS</a>
+    <a href="#contact">CONTACT</a>
+    <a href="#about">ABOUT US</a>
+    
+    <!-- Auth Controls Wrapper -->
+    <div class="nav-auth-wrapper">
+        <!-- Action Buttons Group (Hidden when logged in) -->
+        <div class="auth-buttons-group" id="authButtonsGroup">
+            <button class="nav-btn-secondary" id="openSignInBtn" type="button">SIGN IN</button>
+            <button class="nav-btn-primary" id="openSignUpBtn" type="button">SIGN UP</button>
+        </div>
+
+        <!-- Circular Profile Icon & Dropdown Container -->
+        <div class="profile-nav-wrapper">
+            <button class="profile-icon-btn" id="navProfileBtn" type="button" aria-label="Account Menu">
+                <svg class="profile-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                </svg>
+                <span class="active-status-dot" id="statusDot"></span>
+            </button>
+
+            <!-- Dropdown Card -->
+            <div class="profile-card-dropdown" id="profileDropdown">
+                <div class="profile-card-header">
+                    <div class="user-info">
+                        <span class="gamer-tag">Gamer_77</span>
+                        <span class="station-badge">Station #14 • VIP</span>
+                    </div>
+                </div>
+
+                <div class="session-info-box">
+                    <div class="session-row">
+                        <span>Remaining Time:</span>
+                        <strong class="time-left">2h 45m</strong>
+                    </div>
+                    <div class="session-row">
+                        <span>Pricing Plan:</span>
+                        <strong>Night Pass</strong>
+                    </div>
+                    <div class="session-row">
+                        <span>Wallet Credit:</span>
+                        <strong class="cyan-text">$15.00</strong>
+                    </div>
+                </div>
+
+                <button class="logout-btn" id="logoutBtn" type="button">Log Out</button>
+            </div>
+        </div>
+    </div>
+</nav>
     </div>
 </header>
 
@@ -367,8 +411,9 @@ $title = "Gamora's Gaming Cafe";
 </footer>
 
 </div>
-
+<?php include 'signIn.php'; ?>
 <script src="index.js"></script>
+<script src="signIn.js"></script>
 
 </body>
 </html>
