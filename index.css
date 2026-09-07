@@ -1223,3 +1223,155 @@ footer {
     font-size: 24px;
     cursor: pointer;
 }
+
+/* ================= GAMORA x GITHUB AUTH LAYOUT ================= */
+
+/* Fullscreen Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 8, 15, 0.85);
+    backdrop-filter: blur(6px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* GitHub Form Card adapted for Gaming Cafe Theme */
+.github-style-card {
+    background-color: #0d121d;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 15px rgba(0, 210, 255, 0.1);
+    width: 100%;
+    max-width: 340px;
+    padding: 28px;
+    position: relative;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+/* Top Branding Header */
+.card-brand {
+    text-align: center;
+    margin-bottom: 22px;
+}
+
+/* Bigger Brand Logo */
+.brand-icon {
+    width: 90px; /* Increased from 48px */
+    height: auto;
+    margin-bottom: 12px;
+    object-fit: contain;
+}
+
+/* Auth Switch Footer */
+.auth-switch-footer {
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid #1e293b;
+    text-align: center;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+.cyan-link {
+    color: #00d2ff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.cyan-link:hover {
+    text-decoration: underline;
+}
+/* Close 'X' Button */
+.github-style-card .close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    color: #64748b;
+    font-size: 22px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.github-style-card .close-btn:hover {
+    color: #00d2ff;
+}
+
+/* Form Layout & Labels */
+.form-group {
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    color: #f1f5f9;
+    font-size: 13px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.forgot-link {
+    color: #00d2ff;
+    font-size: 12px;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* GitHub Square Inputs with Neon Glow Focus */
+.github-style-card input[type="text"],
+.github-style-card input[type="email"],
+.github-style-card input[type="password"] {
+    width: 100%;
+    background-color: #070a12;
+    border: 1px solid #1e293b;
+    border-radius: 6px;
+    color: #ffffff;
+    padding: 9px 12px;
+    font-size: 14px;
+    box-sizing: border-box;
+    transition: all 0.2s ease-in-out;
+}
+
+.github-style-card input:focus {
+    outline: none;
+    border-color: #00d2ff;
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.2);
+}
+
+/* Cyan Glowing Submit Button */
+.btn-cyan-submit {
+    width: 100%;
+    background-color: #00d2ff;
+    color: #070a12;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 16px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+
+.btn-cyan-submit:hover {
+    background-color: #33d9ff;
+    box-shadow: 0 0 18px rgba(0, 210, 255, 0.6);
+    transform: translateY(-1px);
+}

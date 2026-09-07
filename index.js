@@ -185,5 +185,25 @@ document.addEventListener("DOMContentLoaded", () => {
         if (e.target === signInModal) signInModal.style.display = "none";
         if (e.target === signUpModal) signUpModal.style.display = "none";
     });
-});
+
+
+// Switch from Sign In modal to Sign Up modal
+const switchToSignUp = document.getElementById("switchToSignUp");
+if (switchToSignUp) {
+    switchToSignUp.addEventListener("click", (e) => {
+        e.preventDefault();
+        signInModal.style.display = "none";
+        signUpModal.style.display = "flex";
+    });
+}
+
+// Switch from Sign Up modal to Sign In modal
+const switchToSignIn = document.getElementById("switchToSignIn");
+if (switchToSignIn) {
+    switchToSignIn.addEventListener("click", (e) => {
+        e.preventDefault();
+        signUpModal.style.display = "none";
+        signInModal.style.display = "flex";
+    });
+}});
 

@@ -418,31 +418,106 @@ $title = "Gamora's Gaming Cafe";
 
 <!-- SIGN IN MODAL -->
 <div id="signInModal" class="modal-overlay" style="display: none;">
-  <div class="modal-content">
+  <div class="github-style-card">
     <span class="close-btn" id="closeSignIn">&times;</span>
+    
+    <div class="card-brand">
+      <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe Logo" class="brand-icon">
+      <h2>Welcome Back <span class="cyan-text">Player</span></h2>
+    </div>
+
     <form id="loginForm">
-      <h2>Sign In</h2>
-      <input type="text" name="login_input" placeholder="Username or Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Log In</button>
+      <div class="form-group">
+        <label for="loginInput">Username or email address</label>
+        <input type="text" id="loginInput" name="login_input" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <div class="label-row">
+          <label for="loginPassword">Password</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <input type="password" id="loginPassword" name="password" required>
+      </div>
+
+      <button type="submit" class="btn-cyan-submit">Sign in</button>
     </form>
+  </div>
+</div>
+
+<!-- SIGN IN MODAL -->
+<div id="signInModal" class="modal-overlay" style="display: none;">
+  <div class="github-style-card">
+    <span class="close-btn" id="closeSignIn">&times;</span>
+    
+    <div class="card-brand">
+      <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe Logo" class="brand-icon">
+      <h2>Sign in to <span class="cyan-text">Gamora's</span></h2>
+    </div>
+
+    <form id="loginForm">
+      <div class="form-group">
+        <label for="loginInput">Username or email address</label>
+        <input type="text" id="loginInput" name="login_input" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <div class="label-row">
+          <label for="loginPassword">Password</label>
+          <a href="#" class="forgot-link">Forgot password?</a>
+        </div>
+        <input type="password" id="loginPassword" name="password" required>
+      </div>
+
+      <button type="submit" class="btn-cyan-submit">Sign in</button>
+    </form>
+
+    <div class="auth-switch-footer">
+      <span>New to Gamora's? <a href="#" id="switchToSignUp" class="cyan-link">Create an account</a></span>
+    </div>
   </div>
 </div>
 
 <!-- SIGN UP MODAL -->
 <div id="signUpModal" class="modal-overlay" style="display: none;">
-  <div class="modal-content">
+  <div class="github-style-card">
     <span class="close-btn" id="closeSignUp">&times;</span>
+    
+    <div class="card-brand">
+      <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe Logo" class="brand-icon">
+      <h2>Create your <span class="cyan-text">Account</span></h2>
+    </div>
+
     <form id="signUpForm">
-      <h2>Sign Up</h2>
-      <input type="text" name="username" placeholder="Username" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="password" name="confirm_password" placeholder="Confirm Password" required>
-      <button type="submit">Register</button>
+      <div class="form-group">
+        <label for="regUsername">Username</label>
+        <input type="text" id="regUsername" name="username" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="regEmail">Email address</label>
+        <input type="email" id="regEmail" name="email" required autocomplete="off">
+      </div>
+
+      <div class="form-group">
+        <label for="regPassword">Password</label>
+        <input type="password" id="regPassword" name="password" required>
+      </div>
+
+      <div class="form-group">
+        <label for="regConfirm">Confirm Password</label>
+        <input type="password" id="regConfirm" name="confirm_password" required>
+      </div>
+
+      <button type="submit" class="btn-cyan-submit">Create Account</button>
     </form>
+
+    <div class="auth-switch-footer">
+      <span>Already have an account? <a href="#" id="switchToSignIn" class="cyan-link">Sign In</a></span>
+    </div>
   </div>
 </div>
+
 <?php include 'signIn.php'; ?>
 <script src="index.js"></script>
 <script src="signIn.js"></script>
