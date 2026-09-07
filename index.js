@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+    
+    // ================= 1. GAMES CAROUSEL =================
     const carousel = document.getElementById('gamesCarousel');
     const scrollLeftBtn = document.getElementById('scrollLeft');
     const scrollRightBtn = document.getElementById('scrollRight');
@@ -6,95 +8,147 @@ document.addEventListener('DOMContentLoaded', () => {
     if (carousel && scrollLeftBtn && scrollRightBtn) {
         let isScrolling = false;
 
-        // Function to move to the next card (Right Arrow)
         const slideNext = () => {
             if (isScrolling) return;
             isScrolling = true;
 
-            const cardWidth = carousel.querySelector('.game-card').offsetWidth + 20; // Card width + gap
+            const card = carousel.querySelector('.game-card');
+            if (!card) return;
+            
+            const cardWidth = card.offsetWidth + 20;
 
-            carousel.scrollBy({
-                left: cardWidth,
-                behavior: 'smooth'
-            });
+            carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
 
-            // After the smooth scroll completes, move the first element to the end
             setTimeout(() => {
                 const firstCard = carousel.querySelector('.game-card');
-                carousel.appendChild(firstCard); // Moves first element to the end
-                carousel.scrollLeft -= cardWidth; // Adjusts scroll position silently to prevent jumping
+                carousel.appendChild(firstCard);
+                carousel.scrollLeft -= cardWidth;
                 isScrolling = false;
-            }, 350); // Matches smooth scroll duration
+            }, 350);
         };
 
-        // Function to move to the previous card (Left Arrow)
         const slidePrev = () => {
             if (isScrolling) return;
             isScrolling = true;
 
             const cards = carousel.querySelectorAll('.game-card');
+            if (cards.length === 0) return;
+
             const lastCard = cards[cards.length - 1];
             const cardWidth = lastCard.offsetWidth + 20;
 
-            // Prepend the last card to the start instantly behind the scenes
             carousel.insertBefore(lastCard, carousel.firstChild);
-            carousel.scrollLeft += cardWidth; // Compensate scroll position instantly
+            carousel.scrollLeft += cardWidth;
 
-            // Smooth scroll back to the new left position
-            carousel.scrollBy({
-                left: -cardWidth,
-                behavior: 'smooth'
-            });
+            carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
 
             setTimeout(() => {
                 isScrolling = false;
             }, 350);
         };
 
-        // Event Listeners
         scrollRightBtn.addEventListener('click', slideNext);
         scrollLeftBtn.addEventListener('click', slidePrev);
     }
-});
 
-document.addEventListener("DOMContentLoaded", () => {
-    // 1. Check if user is logged in on page load
+
+    // ================= 2. AUTH STATUS CHECK =================
     checkLoginStatus();
 
-    // 2. Handle Sign Up Form Submit
+
+    // ================= 3. MODAL CONTROLS =================
+    const signInModal = document.getElementById("signInModal");
+    const signUpModal = document.getElementById("signUpModal");
+    const openSignInBtn = document.getElementById("openSignInBtn");
+    const openSignUpBtn = document.getElementById("openSignUpBtn");
+    const closeSignIn = document.getElementById("closeSignIn");
+    const closeSignUp = document.getElementById("closeSignUp");
+    const switchToSignUp = document.getElementById("switchToSignUp");
+    const switchToSignIn = document.getElementById("switchToSignIn");
+
+    // Open Modals
+    if (openSignInBtn && signInModal) {
+        openSignInBtn.addEventListener("click", () => signInModal.style.display = "flex");
+    }
+    if (openSignUpBtn && signUpModal) {
+        openSignUpBtn.addEventListener("click", () => signUpModal.style.display = "flex");
+    }
+
+    // Close Modals on 'X'
+    if (closeSignIn) closeSignIn.addEventListener("click", () => signInModal.style.display = "none");
+    if (closeSignUp) closeSignUp.addEventListener("click", () => signUpModal.style.display = "none");
+
+    // Switch between Sign In / Sign Up
+    if (switchToSignUp) {
+        switchToSignUp.addEventListener("click", (e) => {
+            e.preventDefault();
+            signInModal.style.display = "none";
+            signUpModal.style.display = "flex";
+        });
+    }
+    if (switchToSignIn) {
+        switchToSignIn.addEventListener("click", (e) => {
+            e.preventDefault();
+            signUpModal.style.display = "none";
+            signInModal.style.display = "flex";
+        });
+    }
+
+    // Close Modals on Overlay Click
+    window.addEventListener("click", (e) => {
+        if (e.target === signInModal) signInModal.style.display = "none";
+        if (e.target === signUpModal) signUpModal.style.display = "none";
+    });
+
+
+    // ================= 4. AUTH FORM HANDLERS =================
+    
+    // Sign Up Submission
     const signUpForm = document.getElementById("signUpForm");
     if (signUpForm) {
         signUpForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const formData = new FormData(signUpForm);
+
             fetch("auth/register.php", { method: "POST", body: formData })
                 .then(res => res.json())
                 .then(data => {
-                    alert(data.message);
-                    if (data.status === "success") signUpForm.reset();
-                });
+                    if (data.status === "success") {
+                        showToast("ACCOUNT CREATED", data.message || "Registration successful!", "success");
+                        signUpForm.reset();
+                        if (signUpModal) signUpModal.style.display = "none";
+                    } else {
+                        showToast("REGISTRATION FAILED", data.message || "Could not register.", "error");
+                    }
+                })
+                .catch(() => showToast("SYSTEM ERROR", "Could not connect to server.", "error"));
         });
     }
 
-    // 3. Handle Login Form Submit
+    // Login Submission
     const loginForm = document.getElementById("loginForm");
     if (loginForm) {
         loginForm.addEventListener("submit", (e) => {
             e.preventDefault();
             const formData = new FormData(loginForm);
+
             fetch("auth/login.php", { method: "POST", body: formData })
                 .then(res => res.json())
                 .then(data => {
-                    alert(data.message);
                     if (data.status === "success") {
+                        showToast("ACCESS GRANTED", data.message || "Successfully logged in!", "success");
                         checkLoginStatus();
                         loginForm.reset();
+                        if (signInModal) signInModal.style.display = "none";
+                    } else {
+                        showToast("ACCESS DENIED", data.message || "Invalid credentials.", "error");
                     }
-                });
+                })
+                .catch(() => showToast("SYSTEM ERROR", "Could not connect to server.", "error"));
         });
     }
 
-    // 4. Handle Logout Button Click
+    // Logout Handler
     const logoutBtn = document.getElementById("logoutBtn");
     if (logoutBtn) {
         logoutBtn.addEventListener("click", () => {
@@ -102,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.status === "success") {
+                        showToast("LOGGED OUT", "You have been logged out.", "success");
                         checkLoginStatus();
                     }
                 });
@@ -109,101 +164,41 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+// ================= HELPER FUNCTIONS =================
+
 function checkLoginStatus() {
     fetch("auth/check_auth.php")
         .then(res => res.json())
         .then(data => {
             const profileDisplay = document.getElementById("profileUsername");
             if (profileDisplay) {
-                if (data.logged_in) {
-                    profileDisplay.textContent = data.username;
-                } else {
-                    profileDisplay.textContent = "Guest / Sign In";
-                }
+                profileDisplay.textContent = data.logged_in ? data.username : "Guest / Sign In";
             }
-        });
+        })
+        .catch(err => console.error("Auth status check failed:", err));
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    // Check session status on load
-    checkLoginStatus();
+function showToast(title, message, type = "success") {
+    const toast = document.getElementById("toastNotification");
+    const toastTitle = document.getElementById("toastTitle");
+    const toastMessage = document.getElementById("toastMessage");
+    const toastIcon = document.getElementById("toastIcon");
 
-    // Open Sign In Modal
-    const openSignInBtn = document.getElementById("openSignInBtn");
-    const signInModal = document.getElementById("signInModal"); // Ensure this matches your modal ID
-    if (openSignInBtn && signInModal) {
-        openSignInBtn.addEventListener("click", () => {
-            signInModal.style.display = "flex";
-        });
+    if (!toast) return;
+
+    toastTitle.textContent = title;
+    toastMessage.textContent = message;
+
+    if (type === "error") {
+        toast.className = "toast-notification error show";
+        toastIcon.textContent = "✕";
+    } else {
+        toast.className = "toast-notification success show";
+        toastIcon.textContent = "✓";
     }
 
-    // Open Sign Up Modal
-    const openSignUpBtn = document.getElementById("openSignUpBtn");
-    const signUpModal = document.getElementById("signUpModal"); // Ensure this matches your modal ID
-    if (openSignUpBtn && signUpModal) {
-        openSignUpBtn.addEventListener("click", () => {
-            signUpModal.style.display = "flex";
-        });
-    }
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    checkLoginStatus();
-
-    // Modal Elements
-    const signInModal = document.getElementById("signInModal");
-    const signUpModal = document.getElementById("signUpModal");
-
-    // Trigger Buttons
-    const openSignInBtn = document.getElementById("openSignInBtn");
-    const openSignUpBtn = document.getElementById("openSignUpBtn");
-
-    // Close Buttons
-    const closeSignIn = document.getElementById("closeSignIn");
-    const closeSignUp = document.getElementById("closeSignUp");
-
-    // Open Sign In
-    if (openSignInBtn && signInModal) {
-        openSignInBtn.addEventListener("click", () => {
-            signInModal.style.display = "flex";
-        });
-    }
-
-    // Open Sign Up
-    if (openSignUpBtn && signUpModal) {
-        openSignUpBtn.addEventListener("click", () => {
-            signUpModal.style.display = "flex";
-        });
-    }
-
-    // Close Modals on 'X' click
-    if (closeSignIn) closeSignIn.addEventListener("click", () => signInModal.style.display = "none");
-    if (closeSignUp) closeSignUp.addEventListener("click", () => signUpModal.style.display = "none");
-
-    // Close Modals when clicking dark background
-    window.addEventListener("click", (e) => {
-        if (e.target === signInModal) signInModal.style.display = "none";
-        if (e.target === signUpModal) signUpModal.style.display = "none";
-    });
-
-
-// Switch from Sign In modal to Sign Up modal
-const switchToSignUp = document.getElementById("switchToSignUp");
-if (switchToSignUp) {
-    switchToSignUp.addEventListener("click", (e) => {
-        e.preventDefault();
-        signInModal.style.display = "none";
-        signUpModal.style.display = "flex";
-    });
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 3500);
 }
-
-// Switch from Sign Up modal to Sign In modal
-const switchToSignIn = document.getElementById("switchToSignIn");
-if (switchToSignIn) {
-    switchToSignIn.addEventListener("click", (e) => {
-        e.preventDefault();
-        signUpModal.style.display = "none";
-        signInModal.style.display = "flex";
-    });
-}});
-

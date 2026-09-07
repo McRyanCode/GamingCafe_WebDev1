@@ -423,7 +423,7 @@ $title = "Gamora's Gaming Cafe";
     
     <div class="card-brand">
       <img src="image_GamingCafe/Logo.png" alt="Gamora's Gaming Cafe Logo" class="brand-icon">
-      <h2>Welcome Back <span class="cyan-text">Player</span></h2>
+      <h2>Welcome Back  <span class="cyan-text">Player</span></h2>
     </div>
 
     <form id="loginForm">
@@ -516,6 +516,15 @@ $title = "Gamora's Gaming Cafe";
       <span>Already have an account? <a href="#" id="switchToSignIn" class="cyan-link">Sign In</a></span>
     </div>
   </div>
+</div>
+
+<!-- Custom Gaming Toast Notification -->
+<div id="toastNotification" class="toast-notification">
+    <div class="toast-icon" id="toastIcon">✓</div>
+    <div class="toast-content">
+        <span class="toast-title" id="toastTitle">System Message</span>
+        <span class="toast-message" id="toastMessage">Action completed successfully.</span>
+    </div>
 </div>
 
 <?php include 'signIn.php'; ?>
