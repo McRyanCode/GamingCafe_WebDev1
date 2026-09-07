@@ -56,3 +56,134 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollLeftBtn.addEventListener('click', slidePrev);
     }
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    // 1. Check if user is logged in on page load
+    checkLoginStatus();
+
+    // 2. Handle Sign Up Form Submit
+    const signUpForm = document.getElementById("signUpForm");
+    if (signUpForm) {
+        signUpForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(signUpForm);
+            fetch("auth/register.php", { method: "POST", body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.status === "success") signUpForm.reset();
+                });
+        });
+    }
+
+    // 3. Handle Login Form Submit
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const formData = new FormData(loginForm);
+            fetch("auth/login.php", { method: "POST", body: formData })
+                .then(res => res.json())
+                .then(data => {
+                    alert(data.message);
+                    if (data.status === "success") {
+                        checkLoginStatus();
+                        loginForm.reset();
+                    }
+                });
+        });
+    }
+
+    // 4. Handle Logout Button Click
+    const logoutBtn = document.getElementById("logoutBtn");
+    if (logoutBtn) {
+        logoutBtn.addEventListener("click", () => {
+            fetch("auth/logout.php")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.status === "success") {
+                        checkLoginStatus();
+                    }
+                });
+        });
+    }
+});
+
+function checkLoginStatus() {
+    fetch("auth/check_auth.php")
+        .then(res => res.json())
+        .then(data => {
+            const profileDisplay = document.getElementById("profileUsername");
+            if (profileDisplay) {
+                if (data.logged_in) {
+                    profileDisplay.textContent = data.username;
+                } else {
+                    profileDisplay.textContent = "Guest / Sign In";
+                }
+            }
+        });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Check session status on load
+    checkLoginStatus();
+
+    // Open Sign In Modal
+    const openSignInBtn = document.getElementById("openSignInBtn");
+    const signInModal = document.getElementById("signInModal"); // Ensure this matches your modal ID
+    if (openSignInBtn && signInModal) {
+        openSignInBtn.addEventListener("click", () => {
+            signInModal.style.display = "flex";
+        });
+    }
+
+    // Open Sign Up Modal
+    const openSignUpBtn = document.getElementById("openSignUpBtn");
+    const signUpModal = document.getElementById("signUpModal"); // Ensure this matches your modal ID
+    if (openSignUpBtn && signUpModal) {
+        openSignUpBtn.addEventListener("click", () => {
+            signUpModal.style.display = "flex";
+        });
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+    checkLoginStatus();
+
+    // Modal Elements
+    const signInModal = document.getElementById("signInModal");
+    const signUpModal = document.getElementById("signUpModal");
+
+    // Trigger Buttons
+    const openSignInBtn = document.getElementById("openSignInBtn");
+    const openSignUpBtn = document.getElementById("openSignUpBtn");
+
+    // Close Buttons
+    const closeSignIn = document.getElementById("closeSignIn");
+    const closeSignUp = document.getElementById("closeSignUp");
+
+    // Open Sign In
+    if (openSignInBtn && signInModal) {
+        openSignInBtn.addEventListener("click", () => {
+            signInModal.style.display = "flex";
+        });
+    }
+
+    // Open Sign Up
+    if (openSignUpBtn && signUpModal) {
+        openSignUpBtn.addEventListener("click", () => {
+            signUpModal.style.display = "flex";
+        });
+    }
+
+    // Close Modals on 'X' click
+    if (closeSignIn) closeSignIn.addEventListener("click", () => signInModal.style.display = "none");
+    if (closeSignUp) closeSignUp.addEventListener("click", () => signUpModal.style.display = "none");
+
+    // Close Modals when clicking dark background
+    window.addEventListener("click", (e) => {
+        if (e.target === signInModal) signInModal.style.display = "none";
+        if (e.target === signUpModal) signUpModal.style.display = "none";
+    });
+});
+

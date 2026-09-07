@@ -191,28 +191,51 @@ footer {
 
 /* ================= SIGN IN / SIGN UP BUTTON ================= */
 
-.auth-btn {
-    display: inline-block;
-    background-color: transparent;
-    color: #00d2ff !important;
-    border: 2px solid #00d2ff;
-    padding: 8px 20px;
-    border-radius: 50px;
-    font-weight: 800 !important;
+/* Navigation Auth Buttons */
+.auth-buttons-group {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nav-btn-primary, .nav-btn-secondary {
+    padding: 8px 18px;
     font-size: 13px;
-    letter-spacing: 0.8px;
-    text-decoration: none;
-    transition: all 0.25s ease !important;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    text-transform: uppercase;
+    font-family: inherit;
 }
 
-.auth-btn:hover {
+/* SIGN UP - Neon Cyan Button */
+.nav-btn-primary {
     background-color: #00d2ff;
-    color: #051432 !important;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
-    transform: translateY(-2px);
+    color: #0b0e14;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
 }
 
+.nav-btn-primary:hover {
+    background-color: #33d9ff;
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
+    transform: translateY(-1px);
+}
+
+/* SIGN IN - Transparent Glowing Border Button */
+.nav-btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1.5px solid #00d2ff;
+}
+
+.nav-btn-secondary:hover {
+    background: rgba(0, 210, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+    transform: translateY(-1px);
+}
 /* ================= WHY CHOOSE US ================= */
 
 /* ================= WHY CHOOSE US ================= */
@@ -1167,3 +1190,36 @@ footer {
     /* ... rest of existing styles ... */
 }
 
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #0f172a;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.3);
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
