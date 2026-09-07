@@ -31,50 +31,60 @@ $title = "Gamora's Gaming Cafe";
                 <a href="#about">ABOUT US</a>
                 
                 <!-- Auth Controls Wrapper -->
-                <div class="nav-auth-wrapper">
-                    <!-- Action Buttons Group (Shown when logged out) -->
-                    <div class="auth-buttons-group" id="authButtonsGroup">
-                        <button class="nav-btn-secondary" id="openSignInBtn" type="button">SIGN IN</button>
-                        <button class="nav-btn-primary" id="openSignUpBtn" type="button">SIGN UP</button>
-                    </div>
+              <div class="nav-auth-container">
+  <!-- Shown when Logged Out -->
+  <div id="loggedOutNav" class="auth-btn-group">
+    <button id="openSignInBtn" class="btn-nav">Sign In</button>
+    <button id="openSignUpBtn" class="btn-nav-primary">Sign Up</button>
+  </div>
 
-                    <!-- Circular Profile Icon & Dropdown Container (Shown when logged in) -->
-                    <div class="profile-nav-wrapper" id="profileNavWrapper" style="display: none;">
-                        <button class="profile-icon-btn" id="navProfileBtn" type="button" aria-label="Account Menu">
-                            <svg class="profile-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-                                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                            </svg>
-                            <span class="active-status-dot" id="statusDot"></span>
-                        </button>
+  <!-- Shown when Logged In (GitHub Style Dropdown) -->
+  <div id="loggedInNav" class="user-profile-wrapper" style="display: none;">
+    <button id="profileMenuBtn" class="profile-avatar-btn">
+      <img src="image_GamingCafe/profile.png" alt="Profile Avatar" class="user-avatar">
+    </button>
 
-                        <!-- Dropdown Card -->
-                        <div class="profile-card-dropdown" id="profileDropdown">
-                            <div class="profile-card-header">
-                                <div class="user-info">
-                                    <span class="gamer-tag" id="profileGamerTag">Guest</span>
-                                    <span class="station-badge" id="profileStation">Station #--</span>
-                                </div>
-                            </div>
+    <div id="profileDropdown" class="github-dropdown-menu">
+      <div class="dropdown-header">
+        <span class="user-handle" id="userHandleDisplay">@gamer</span>
+        <span class="user-status-badge">ONLINE</span>
+      </div>
 
-                            <div class="session-info-box">
-                                <div class="session-row">
-                                    <span>Remaining Time:</span>
-                                    <strong class="time-left" id="profileTime">0h 0m</strong>
-                                </div>
-                                <div class="session-row">
-                                    <span>Pricing Plan:</span>
-                                    <strong id="profilePlan">Standard</strong>
-                                </div>
-                                <div class="session-row">
-                                    <span>Wallet Credit:</span>
-                                    <strong class="cyan-text" id="profileWallet">$0.00</strong>
-                                </div>
-                            </div>
+      <div class="dropdown-divider"></div>
 
-                            <button class="logout-btn" id="logoutBtn" type="button">Log Out</button>
-                        </div>
-                    </div>
-                </div>
+      <a href="#" class="dropdown-item">
+        <span class="item-icon">👤</span>
+        <div class="item-text">
+          <span class="item-title">Profile</span>
+          <span class="item-sub">Manage account</span>
+        </div>
+      </a>
+
+      <a href="#" class="dropdown-item">
+        <span class="item-icon">🖥️</span>
+        <div class="item-text">
+          <span class="item-title">Booked PC</span>
+          <span class="item-sub" id="bookedPcDisplay">PC-00 (None)</span>
+        </div>
+      </a>
+
+      <a href="#" class="dropdown-item">
+        <span class="item-icon">⚡</span>
+        <div class="item-text">
+          <span class="item-title">Pricing Tier</span>
+          <span class="item-sub" id="pricingTierDisplay">No Active Plan</span>
+        </div>
+      </a>
+
+      <div class="dropdown-divider"></div>
+
+      <button id="logoutBtn" class="dropdown-item logout-item">
+        <span class="item-icon">🚪</span>
+        <span class="item-title">Sign out</span>
+      </button>
+    </div>
+  </div>
+</div>
             </nav>
         </div> <!-- ADDED: Closes nav-container -->
     </header> <!-- ADDED: Closes site-header -->

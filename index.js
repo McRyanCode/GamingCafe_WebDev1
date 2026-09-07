@@ -65,6 +65,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeSignUp = document.getElementById("closeSignUp");
     const switchToSignUp = document.getElementById("switchToSignUp");
     const switchToSignIn = document.getElementById("switchToSignIn");
+    const profileMenuBtn = document.getElementById("profileMenuBtn");
+const profileDropdown = document.getElementById("profileDropdown");
 
     // Open Modals
     if (openSignInBtn && signInModal) {
@@ -99,6 +101,48 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === signInModal) signInModal.style.display = "none";
         if (e.target === signUpModal) signUpModal.style.display = "none";
     });
+
+    if (profileMenuBtn && profileDropdown) {
+    profileMenuBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        profileDropdown.classList.toggle("show");
+    });
+
+    // Close dropdown when clicking outside
+    window.addEventListener("click", () => {
+        profileDropdown.classList.remove("show");
+    });
+}
+
+// Updated Login Check Function
+function checkLoginStatus() {
+    fetch("auth/check_auth.php")
+        .then(res => res.json())
+        .then(data => {
+            const loggedInNav = document.getElementById("loggedInNav");
+            const loggedOutNav = document.getElementById("loggedOutNav");
+
+            if (data.logged_in) {
+                // Hide Sign In/Out, Show Profile Icon
+                if (loggedOutNav) loggedOutNav.style.display = "none";
+                if (loggedInNav) loggedInNav.style.display = "inline-block";
+
+                // Set User Details
+                const userHandle = document.getElementById("userHandleDisplay");
+                const bookedPc = document.getElementById("bookedPcDisplay");
+                const pricingTier = document.getElementById("pricingTierDisplay");
+
+                if (userHandle) userHandle.textContent = "@" + data.username;
+                if (bookedPc) bookedPc.textContent = data.booked_pc || "No PC Booked";
+                if (pricingTier) pricingTier.textContent = data.pricing_tier || "Standard Plan";
+            } else {
+                // Show Sign In/Out Buttons, Hide Profile Icon
+                if (loggedOutNav) loggedOutNav.style.display = "flex";
+                if (loggedInNav) loggedInNav.style.display = "none";
+            }
+        })
+        .catch(err => console.error("Auth status check failed:", err));
+}
 
 
     // ================= 4. AUTH FORM HANDLERS =================

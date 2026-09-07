@@ -192,13 +192,13 @@ footer {
 /* ================= SIGN IN / SIGN UP BUTTON ================= */
 
 /* Navigation Auth Buttons */
-.auth-buttons-group {
+.auth-btn-group {
     display: flex;
     align-items: center;
     gap: 12px;
 }
 
-.nav-btn-primary, .nav-btn-secondary {
+.btn-nav-primary, .btn-nav {
     padding: 8px 18px;
     font-size: 13px;
     font-weight: 700;
@@ -211,27 +211,27 @@ footer {
 }
 
 /* SIGN UP - Neon Cyan Button */
-.nav-btn-primary {
+.btn-nav-primary {
     background-color: #00d2ff;
     color: #0b0e14;
     border: none;
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
 }
 
-.nav-btn-primary:hover {
+.btn-nav-primary:hover {
     background-color: #33d9ff;
     box-shadow: 0 0 15px rgba(0, 210, 255, 0.7);
     transform: translateY(-1px);
 }
 
 /* SIGN IN - Transparent Glowing Border Button */
-.nav-btn-secondary {
+.btn-nav {
     background: transparent;
     color: #ffffff;
     border: 1.5px solid #00d2ff;
 }
 
-.nav-btn-secondary:hover {
+.btn-nav:hover {
     background: rgba(0, 210, 255, 0.15);
     box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
     transform: translateY(-1px);
@@ -1450,4 +1450,131 @@ footer {
     color: #94a3b8;
     font-size: 12px;
     margin-top: 2px;
+}
+
+/* ================= PROFILE DROPDOWN MENU ================= */
+
+.user-profile-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-avatar-btn {
+    background: transparent;
+    border: 2px solid #1e293b;
+    border-radius: 50%;
+    padding: 2px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.profile-avatar-btn:hover {
+    border-color: #00d2ff;
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.4);
+}
+
+.user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* GitHub Style Popover Container */
+.github-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    width: 230px;
+    background-color: #0d121d;
+    border: 1px solid #1e293b;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 15px rgba(0, 210, 255, 0.1);
+    padding: 8px 0;
+    z-index: 1000;
+    display: none; /* Controlled via JS */
+}
+
+.github-dropdown-menu.show {
+    display: block;
+}
+
+/* Menu Items & Headers */
+.dropdown-header {
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-handle {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.user-status-badge {
+    font-size: 10px;
+    color: #00d2ff;
+    background: rgba(0, 210, 255, 0.15);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #1e293b;
+    margin: 6px 0;
+}
+
+.dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 16px;
+    color: #f1f5f9;
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 210, 255, 0.1);
+    color: #00d2ff;
+}
+
+.item-icon {
+    font-size: 14px;
+}
+
+.item-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.item-title {
+    font-weight: 600;
+}
+
+.item-sub {
+    font-size: 11px;
+    color: #00d2ff;
+}
+
+.logout-item {
+    color: #ff4d4d;
+}
+
+.logout-item:hover {
+    background-color: rgba(255, 77, 77, 0.1);
+    color: #ff4d4d;
 }
