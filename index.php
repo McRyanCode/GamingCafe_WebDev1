@@ -53,16 +53,18 @@ $title = "Gamora's Gaming Cafe";
   <div class="dropdown-divider"></div>
 
   <!-- Profile / Account Settings Trigger -->
-  <button type="button" id="menuProfileBtn" class="dropdown-item">
-    <span class="item-icon">👤</span>
-    <div class="item-text">
-      <span class="item-title">Profile</span>
-      <span class="item-sub">Manage account</span>
-    </div>
-  </button>
+  <!-- Profile Link (Opens Account Settings / User Info) -->
+<a href="drpdwn/profile.php" id="menuProfileBtn" class="dropdown-item">
+  <span class="item-icon">👤</span>
+  <div class="item-text">
+    <span class="item-title">Profile</span>
+    <span class="item-sub">Manage account</span>
+  </div>
+</a>
+
 
   <!-- Booked PC / Station Reservation Link -->
-  <a href="#pcs" id="menuBookedPcBtn" class="dropdown-item">
+  <a href="booking/my_bookings.php" id="menuBookedPcBtn" class="dropdown-item">
     <span class="item-icon">🖥️</span>
     <div class="item-text">
       <span class="item-title">Booked PC</span>
@@ -70,14 +72,24 @@ $title = "Gamora's Gaming Cafe";
     </div>
   </a>
 
-  <!-- Pricing Tier Upgrade Link -->
-  <a href="#pricing" id="menuPricingBtn" class="dropdown-item">
-    <span class="item-icon">⚡</span>
-    <div class="item-text">
-      <span class="item-title">Pricing Tier</span>
-      <span class="item-sub" id="pricingTierDisplay">Standard Plan</span>
-    </div>
-  </a>
+  <!-- Pricing Tier Dynamic Link -->
+<a href="javascript:void(0);" id="menuPricingBtn" class="dropdown-item" onclick="openTierModal()">
+  <span class="item-icon">⚡</span>
+  <div class="item-text">
+    <span class="item-title">Pricing Tier</span>
+    <span class="item-sub" id="pricingTierDisplay">Checking tier...</span>
+  </div>
+</a>
+
+<?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+<a href="admin/customers.php" id="menuAdminBtn" class="dropdown-item">
+  <span class="item-icon">🛠️</span>
+  <div class="item-text">
+    <span class="item-title" style="color: #00f5d4;">Admin Area</span>
+    <span class="item-sub">Manage Customers</span>
+  </div>
+</a>
+<?php endif; ?>
 
   <div class="dropdown-divider"></div>
 
@@ -92,6 +104,32 @@ $title = "Gamora's Gaming Cafe";
             </nav>
         </div> <!-- ADDED: Closes nav-container -->
     </header> <!-- ADDED: Closes site-header -->
+
+    <!-- Pricing Tier Status Modal -->
+<div id="tierModal" class="tier-modal-overlay" style="display:none;">
+  <div class="tier-modal-content">
+    <span class="tier-modal-close" onclick="closeTierModal()">&times;</span>
+    <h2>Your Pricing Tier Status</h2>
+    
+    <div class="tier-status-box">
+      <p class="status-label">Current Active Tier:</p>
+      <h1 id="modalTierBadge">Loading...</h1>
+      <p id="modalTierDesc">Fetching your latest station reservation details...</p>
+    </div>
+
+    <div class="tier-breakdown">
+      <h3>Tier Reference Guide</h3>
+      <ul>
+        <li><strong>BASIC:</strong> Standard gaming up to 2 Hours</li>
+        <li><strong>STANDARD:</strong> Extended gaming (3–4 Hours)</li>
+        <li><strong>PREMIUM:</strong> VIP Gaming Sessions (5+ Hours)</li>
+        <li><strong>OPEN TIME:</strong> Pay-as-you-go flexible sessions</li>
+      </ul>
+    </div>
+
+    <button onclick="closeTierModal()" class="btn-primary" style="width:100%; margin-top:15px;">Close</button>
+  </div>
+</div>
 
     <!-- Main Hero Body -->
     <div class="hero-body">

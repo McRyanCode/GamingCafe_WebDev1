@@ -24,11 +24,13 @@ document.addEventListener("DOMContentLoaded", () => {
         selectedTime = currentTime;
     }
 
-    // UI Elements - Selection View
+    // UI Views
     const selectionStep = document.getElementById("selectionStep");
     const summaryStep = document.getElementById("summaryStep");
+    const successStep = document.getElementById("successStep");
     const selectionBar = document.getElementById("selectionBar");
 
+    // UI Elements
     const deviceCards = document.querySelectorAll(".device-card");
     const selectedDeviceText = document.getElementById("selectedDeviceText");
     const selectedTimeText = document.getElementById("selectedTimeText");
@@ -45,12 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const tierDisplay = document.getElementById("tierDisplay");
     const priceDisplay = document.getElementById("priceDisplay");
 
-    // UI Elements - Buttons
+    // UI Buttons
     const reviewBookingBtn = document.getElementById("reviewBookingBtn");
     const backToEditBtn = document.getElementById("backToEditBtn");
     const confirmBookingBtn = document.getElementById("confirmBookingBtn");
 
-    // UI Elements - Summary Fields
+    // Summary Display Elements
     const sumDevice = document.getElementById("sumDevice");
     const sumType = document.getElementById("sumType");
     const sumDate = document.getElementById("sumDate");
@@ -58,6 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
     const sumDuration = document.getElementById("sumDuration");
     const sumTier = document.getElementById("sumTier");
     const sumPrice = document.getElementById("sumPrice");
+
+    // Success Display Elements
+    const succBookingId = document.getElementById("succBookingId");
+    const succDevice = document.getElementById("succDevice");
+    const succDateTime = document.getElementById("succDateTime");
+    const succDuration = document.getElementById("succDuration");
+    const succPrice = document.getElementById("succPrice");
 
     // 1. Calculation Function
     function calculatePricing() {
@@ -88,16 +97,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 2. Event Listeners for Date and Time
-    bookingDateInput.addEventListener("change", (e) => {
-        selectedDate = e.target.value;
-    });
+    // Date/Time Events
+    bookingDateInput.addEventListener("change", (e) => selectedDate = e.target.value);
+    bookingTimeInput.addEventListener("change", (e) => selectedTime = e.target.value);
 
-    bookingTimeInput.addEventListener("change", (e) => {
-        selectedTime = e.target.value;
-    });
-
-    // 3. Device Selection Handler
+    // Device Cards Selection
     deviceCards.forEach(card => {
         card.addEventListener("click", () => {
             deviceCards.forEach(c => {
@@ -120,11 +124,10 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 
-    // 4. Time Mode Change Handler
+    // Time Mode Selection
     timeModeRadios.forEach(radio => {
         radio.addEventListener("change", (e) => {
             timeMode = e.target.value;
-
             if (timeMode === "Open") {
                 fixedHoursWrapper.style.display = "none";
                 openInfoWrapper.style.display = "block";
@@ -132,26 +135,13 @@ document.addEventListener("DOMContentLoaded", () => {
                 fixedHoursWrapper.style.display = "inline-block";
                 openInfoWrapper.style.display = "none";
             }
-
             updateSummary();
         });
     });
 
-    // 5. Counter Controls
-    plusBtn.addEventListener("click", () => {
-        hours++;
-        hoursInput.value = hours;
-        updateSummary();
-    });
-
-    minusBtn.addEventListener("click", () => {
-        if (hours > 1) {
-            hours--;
-            hoursInput.value = hours;
-            updateSummary();
-        }
-    });
-
+    // Hour Counter Buttons
+    plusBtn.addEventListener("click", () => { hours++; hoursInput.value = hours; updateSummary(); });
+    minusBtn.addEventListener("click", () => { if (hours > 1) { hours--; hoursInput.value = hours; updateSummary(); } });
     hoursInput.addEventListener("input", (e) => {
         let val = parseInt(e.target.value, 10);
         if (isNaN(val) || val < 1) val = 1;
@@ -160,50 +150,23 @@ document.addEventListener("DOMContentLoaded", () => {
         updateSummary();
     });
 
-    // 6. Update Selection Displays
     function updateSummary() {
         const pricing = calculatePricing();
-
-        if (selectedDevice) {
-            selectedDeviceText.textContent = `${selectedDevice.name} (${selectedDevice.type})`;
-        } else {
-            selectedDeviceText.textContent = "None";
-        }
-
-        if (timeMode === "Open") {
-            selectedTimeText.textContent = "Open Time";
-        } else {
-            selectedTimeText.textContent = `${hours} Hour(s) (Fixed)`;
-        }
-
+        selectedDeviceText.textContent = selectedDevice ? `${selectedDevice.name} (${selectedDevice.type})` : "None";
+        selectedTimeText.textContent = timeMode === "Open" ? "Open Time" : `${hours} Hour(s) (Fixed)`;
         tierDisplay.textContent = pricing.tier;
         priceDisplay.textContent = pricing.displayText;
         barPriceText.textContent = pricing.displayText;
-
         minusBtn.disabled = (hours <= 1);
     }
 
-    // 7. Review Booking Button Click
+    // Review Button Click
     reviewBookingBtn.addEventListener("click", () => {
-        // Validation Checks
-        if (!selectedDevice) {
-            alert("Please select a PC or Console station before proceeding.");
-            return;
-        }
-
-        if (!selectedDate) {
-            alert("Please select a valid booking date.");
-            return;
-        }
-
-        if (!selectedTime) {
-            alert("Please select a valid start time.");
-            return;
-        }
+        if (!selectedDevice) return alert("Please select a PC or Console station before proceeding.");
+        if (!selectedDate) return alert("Please select a valid booking date.");
+        if (!selectedTime) return alert("Please select a valid start time.");
 
         const pricing = calculatePricing();
-
-        // Populate Summary Fields
         sumDevice.textContent = selectedDevice.name;
         sumType.textContent = selectedDevice.type;
         sumDate.textContent = selectedDate;
@@ -212,25 +175,69 @@ document.addEventListener("DOMContentLoaded", () => {
         sumTier.textContent = pricing.tier;
         sumPrice.textContent = pricing.displayText;
 
-        // Switch Views
         selectionStep.style.display = "none";
         selectionBar.style.display = "none";
         summaryStep.style.display = "block";
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 8. Back to Edit Button Click
+    // Back Button Click
     backToEditBtn.addEventListener("click", () => {
         summaryStep.style.display = "none";
         selectionStep.style.display = "block";
         selectionBar.style.display = "flex";
     });
 
-    // 9. Confirm Booking Click (Placeholder Notice - No DB Save yet)
-    confirmBookingBtn.addEventListener("click", () => {
-        alert(`Booking summary reviewed successfully!\n\nNote: Step 6 complete. Database storage will be implemented in Step 7.`);
+ confirmBookingBtn.addEventListener("click", () => {
+        confirmBookingBtn.disabled = true;
+        confirmBookingBtn.textContent = "Saving Booking...";
+
+        // Fetch direct input values from DOM to ensure non-empty strings
+        const dateVal = document.getElementById("bookingDate") ? document.getElementById("bookingDate").value : selectedDate;
+        const timeVal = document.getElementById("bookingTime") ? document.getElementById("bookingTime").value : selectedTime;
+
+        const payload = {
+            device_id: selectedDevice ? selectedDevice.id : "",
+            device_type: selectedDevice ? selectedDevice.type : "",
+            booking_date: dateVal,
+            start_time: timeVal,
+            time_mode: timeMode,
+            hours: parseInt(hours, 10) || 1
+        };
+
+        fetch("process_booking.php", {
+            method: "POST",
+            headers: { 
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify(payload)
+        })
+        .then(response => response.json())
+       .then(data => {
+    if (data.success) {
+        succBookingId.textContent = `#BOOK-${String(data.booking_id).padStart(5, '0')}`;
+        succDevice.textContent = `${data.device_id} (${data.device_type})`;
+        succDateTime.textContent = `${data.booking_date} at ${data.start_time}`;
+        succDuration.textContent = data.duration;
+        succPrice.textContent = data.total_price;
+
+        summaryStep.style.display = "none";
+        successStep.style.display = "block";
+    } else {
+        // Displays the detailed message returned by PHP
+        alert(data.message);
+        confirmBookingBtn.disabled = false;
+        confirmBookingBtn.textContent = "Confirm Booking";
+    }
+})  
+.catch(error => {
+    console.error("Booking Error:", error);
+    alert("Network or Parsing Error: " + error.message);
+    confirmBookingBtn.disabled = false;
+    confirmBookingBtn.textContent = "Confirm Booking";
+});
+
     });
 
-    // Initialize display state
-    updateSummary();
 });

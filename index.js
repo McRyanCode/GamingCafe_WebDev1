@@ -298,3 +298,31 @@ function showToast(title, message, type = "success") {
         toast.classList.remove("show");
     }, 3500);
 }
+
+document.addEventListener("DOMContentLoaded", fetchUserTier);
+
+function fetchUserTier() {
+    fetch("booking/get_user_tier.php")
+        .then(res => res.json())
+        .then(data => {
+            const display = document.getElementById("pricingTierDisplay");
+            const badge = document.getElementById("modalTierBadge");
+            const desc = document.getElementById("modalTierDesc");
+
+            if (display) display.textContent = data.tier + " Plan";
+            if (badge) badge.textContent = data.tier;
+            if (desc) desc.textContent = data.description;
+        })
+        .catch(() => {
+            const display = document.getElementById("pricingTierDisplay");
+            if (display) display.textContent = "Standard Plan";
+        });
+}
+
+function openTierModal() {
+    document.getElementById("tierModal").style.display = "flex";
+}
+
+function closeTierModal() {
+    document.getElementById("tierModal").style.display = "none";
+}

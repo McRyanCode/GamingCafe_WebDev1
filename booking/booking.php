@@ -212,7 +212,7 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </section>
 
-            <!-- STEP 5: PRICING REVIEW DISPLAY CARD -->
+            <!-- PRICING REVIEW DISPLAY CARD -->
             <section class="price-summary-card">
                 <h2 class="section-title">Pricing Breakdown</h2>
                 <div class="price-details-grid">
@@ -229,7 +229,7 @@ if (!isset($_SESSION['user_id'])) {
 
         </div>
 
-        <!-- STEP 6: BOOKING SUMMARY REVIEW CARD (Hidden by default) -->
+        <!-- BOOKING SUMMARY REVIEW CARD -->
         <div id="summaryStep" class="summary-wrapper" style="display: none;">
             <div class="summary-card">
                 <h2 class="summary-header">Review Your Booking</h2>
@@ -269,6 +269,41 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="summary-actions">
                     <button type="button" class="btn-secondary" id="backToEditBtn">&larr; Back to Edit</button>
                     <button type="button" class="btn-primary" id="confirmBookingBtn">Confirm Booking</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- SUCCESS CONFIRMATION STEP CARD -->
+        <div id="successStep" class="summary-wrapper" style="display: none;">
+            <div class="summary-card success-card">
+                <h2 class="summary-header success-title">🎉 Booking Confirmed!</h2>
+                <p class="summary-subtitle">Your reservation has been recorded in our system.</p>
+
+                <div class="summary-details-grid">
+                    <div class="summary-row">
+                        <span class="summary-label">Booking Reference ID:</span>
+                        <span class="summary-value highlight-id" id="succBookingId">--</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Station:</span>
+                        <span class="summary-value" id="succDevice">--</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Date & Time:</span>
+                        <span class="summary-value" id="succDateTime">--</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Duration:</span>
+                        <span class="summary-value" id="succDuration">--</span>
+                    </div>
+                    <div class="summary-row highlight-row">
+                        <span class="summary-label">Total Amount Paid/Due:</span>
+                        <span class="summary-value highlight-price" id="succPrice">--</span>
+                    </div>
+                </div>
+
+                <div class="summary-actions">
+                    <a href="../index.php" class="btn-primary text-center">Return to Home</a>
                 </div>
             </div>
         </div>

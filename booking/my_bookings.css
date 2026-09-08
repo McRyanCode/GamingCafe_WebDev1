@@ -1,0 +1,214 @@
+:root {
+    --bg-dark: #0f111a;
+    --card-bg: #1a1d2e;
+    --accent-purple: #7b2cbf;
+    --accent-neon: #00f5d4;
+    --text-light: #f8f9fa;
+    --text-muted: #a0aab8;
+    --border-color: #2d3248;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+.bookings-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.bookings-header {
+    margin-bottom: 30px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 15px;
+}
+
+.bookings-header h1 {
+    color: var(--accent-neon);
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+}
+
+.bookings-header p {
+    color: var(--text-muted);
+    margin: 0;
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+    background: var(--card-bg);
+    border: 1px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 60px 20px;
+    margin-top: 20px;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 15px;
+}
+
+.empty-state h2 {
+    margin: 0 0 10px 0;
+}
+
+.empty-state p {
+    color: var(--text-muted);
+    margin-bottom: 25px;
+}
+
+/* Grid Layout */
+.bookings-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+.booking-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.booking-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-purple);
+}
+
+.card-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 12px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.booking-id {
+    font-family: monospace;
+    font-weight: bold;
+    color: var(--accent-neon);
+}
+
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.status-confirmed {
+    background: rgba(0, 245, 212, 0.15);
+    color: var(--accent-neon);
+    border: 1px solid var(--accent-neon);
+}
+
+.card-body {
+    padding: 20px;
+    flex-grow: 1;
+}
+
+.device-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.device-icon {
+    font-size: 2rem;
+}
+
+.device-info h3 {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.device-type {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.booking-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+.detail-item .label {
+    color: var(--text-muted);
+}
+
+.tier-badge {
+    background: var(--accent-purple);
+    color: #fff;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.card-footer {
+    padding: 15px 20px;
+    background: rgba(0, 0, 0, 0.15);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-amount {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--accent-neon);
+}
+
+/* Buttons */
+.btn-primary, .btn-secondary {
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--accent-purple);
+    color: #fff;
+}
+
+.btn-primary:hover {
+    background: #9d4edd;
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--accent-neon);
+    border: 1px solid var(--accent-neon);
+}
+
+.btn-secondary:hover {
+    background: rgba(0, 245, 212, 0.1);
+}
+
+.actions-bar {
+    margin-top: 30px;
+    text-align: right;
+}
