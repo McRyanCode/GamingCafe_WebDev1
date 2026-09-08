@@ -27,7 +27,7 @@ $title = "Gamora's Gaming Cafe";
                 <a href="#pcs">PCs</a>
                 <a href="#rates">RATES</a>
                 <a href="#events">EVENTS</a>
-                <a href="#contact">CONTACT</a>
+                <a >CONTACT</a>
                 <a href="#about">ABOUT US</a>
                 
                 <!-- Auth Controls Wrapper -->
@@ -45,44 +45,48 @@ $title = "Gamora's Gaming Cafe";
     </button>
 
     <div id="profileDropdown" class="github-dropdown-menu">
-      <div class="dropdown-header">
-        <span class="user-handle" id="userHandleDisplay">@gamer</span>
-        <span class="user-status-badge">ONLINE</span>
-      </div>
+  <div class="dropdown-header">
+    <span class="user-handle" id="userHandleDisplay">@gamer</span>
+    <span class="user-status-badge">ONLINE</span>
+  </div>
 
-      <div class="dropdown-divider"></div>
+  <div class="dropdown-divider"></div>
 
-      <a href="#" class="dropdown-item">
-        <span class="item-icon">👤</span>
-        <div class="item-text">
-          <span class="item-title">Profile</span>
-          <span class="item-sub">Manage account</span>
-        </div>
-      </a>
-
-      <a href="#" class="dropdown-item">
-        <span class="item-icon">🖥️</span>
-        <div class="item-text">
-          <span class="item-title">Booked PC</span>
-          <span class="item-sub" id="bookedPcDisplay">PC-00 (None)</span>
-        </div>
-      </a>
-
-      <a href="#" class="dropdown-item">
-        <span class="item-icon">⚡</span>
-        <div class="item-text">
-          <span class="item-title">Pricing Tier</span>
-          <span class="item-sub" id="pricingTierDisplay">No Active Plan</span>
-        </div>
-      </a>
-
-      <div class="dropdown-divider"></div>
-
-      <button id="logoutBtn" class="dropdown-item logout-item">
-        <span class="item-icon">🚪</span>
-        <span class="item-title">Sign out</span>
-      </button>
+  <!-- Profile / Account Settings Trigger -->
+  <button type="button" id="menuProfileBtn" class="dropdown-item">
+    <span class="item-icon">👤</span>
+    <div class="item-text">
+      <span class="item-title">Profile</span>
+      <span class="item-sub">Manage account</span>
     </div>
+  </button>
+
+  <!-- Booked PC / Station Reservation Link -->
+  <a href="#pcs" id="menuBookedPcBtn" class="dropdown-item">
+    <span class="item-icon">🖥️</span>
+    <div class="item-text">
+      <span class="item-title">Booked PC</span>
+      <span class="item-sub" id="bookedPcDisplay">No PC Booked</span>
+    </div>
+  </a>
+
+  <!-- Pricing Tier Upgrade Link -->
+  <a href="#pricing" id="menuPricingBtn" class="dropdown-item">
+    <span class="item-icon">⚡</span>
+    <div class="item-text">
+      <span class="item-title">Pricing Tier</span>
+      <span class="item-sub" id="pricingTierDisplay">Standard Plan</span>
+    </div>
+  </a>
+
+  <div class="dropdown-divider"></div>
+
+  <!-- Sign Out Trigger -->
+  <button type="button" id="logoutBtn" class="dropdown-item logout-item">
+    <span class="item-icon">🚪</span>
+    <span class="item-title">Sign out</span>
+  </button>
+</div>
   </div>
 </div>
             </nav>
@@ -96,8 +100,8 @@ $title = "Gamora's Gaming Cafe";
                 <h1>WHERE<br><span class="cyan-text">CHAMPIONS</span> ARE BORN.</h1>
                 
                 <div class="hero-buttons">
-                    <a href="#book" class="hero-btn primary-btn">BOOK NOW</a>
-                    <a href="#rates" class="hero-btn secondary-btn">VIEW RATES</a>
+                    <a href="booking/booking.php" class="hero-btn primary-btn">BOOK NOW</a>
+                    <a href="booking/booking.php" class="hero-btn secondary-btn">VIEW RATES</a>
                 </div>
             </div>
         </div>
@@ -228,7 +232,7 @@ $title = "Gamora's Gaming Cafe";
             <h3 class="tier-title">BASIC</h3>
             <p class="duration">1 HOUR</p>
             <div class="price"><span class="currency">₱</span>40</div>
-            <a href="#contact" class="reserve-btn">RESERVE NOW</a>
+            <a  class="reserve-btn">RESERVE NOW</a>
         </div>
 
         <!-- Card 2: Standard -->
@@ -236,7 +240,7 @@ $title = "Gamora's Gaming Cafe";
             <h3 class="tier-title">STANDARD</h3>
             <p class="duration">3 HOURS</p>
             <div class="price"><span class="currency">₱</span>100</div>
-            <a href="#contact" class="reserve-btn">RESERVE NOW</a>
+            <a  class="reserve-btn">RESERVE NOW</a>
         </div>
 
         <!-- Card 3: Premium -->
@@ -244,7 +248,7 @@ $title = "Gamora's Gaming Cafe";
             <h3 class="tier-title">PREMIUM</h3>
             <p class="duration">5 HOURS</p>
             <div class="price"><span class="currency">₱</span>150</div>
-            <a href="#contact" class="reserve-btn">RESERVE NOW</a>
+            <a  class="reserve-btn">RESERVE NOW</a>
         </div>
 
     </div>
@@ -374,7 +378,7 @@ $title = "Gamora's Gaming Cafe";
                         <li><a href="#pcs">PCs</a></li>
                         <li><a href="#rates">RATES</a></li>
                         <li><a href="#events">EVENTS</a></li>
-                        <li><a href="#contact">CONTACT</a></li>
+                        <li><a >CONTACT</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                     </ul>
                 </div>

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // ================= 1. GAMES CAROUSEL =================
     const carousel = document.getElementById('gamesCarousel');
     const scrollLeftBtn = document.getElementById('scrollLeft');
@@ -14,15 +14,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const card = carousel.querySelector('.game-card');
             if (!card) return;
-            
-            const cardWidth = card.offsetWidth + 20;
 
+            const cardWidth = card.offsetWidth + 20;
             carousel.scrollBy({ left: cardWidth, behavior: 'smooth' });
 
             setTimeout(() => {
                 const firstCard = carousel.querySelector('.game-card');
-                carousel.appendChild(firstCard);
-                carousel.scrollLeft -= cardWidth;
+                if (firstCard) {
+                    carousel.appendChild(firstCard);
+                    carousel.scrollLeft -= cardWidth;
+                }
                 isScrolling = false;
             }, 350);
         };
@@ -39,7 +40,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             carousel.insertBefore(lastCard, carousel.firstChild);
             carousel.scrollLeft += cardWidth;
-
             carousel.scrollBy({ left: -cardWidth, behavior: 'smooth' });
 
             setTimeout(() => {
@@ -51,12 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         scrollLeftBtn.addEventListener('click', slidePrev);
     }
 
-
-    // ================= 2. AUTH STATUS CHECK =================
-    checkLoginStatus();
-
-
-    // ================= 3. MODAL CONTROLS =================
+    // ================= 2. MODAL & DROPDOWN CONTROLS =================
     const signInModal = document.getElementById("signInModal");
     const signUpModal = document.getElementById("signUpModal");
     const openSignInBtn = document.getElementById("openSignInBtn");
@@ -65,34 +60,36 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeSignUp = document.getElementById("closeSignUp");
     const switchToSignUp = document.getElementById("switchToSignUp");
     const switchToSignIn = document.getElementById("switchToSignIn");
+
     const profileMenuBtn = document.getElementById("profileMenuBtn");
-const profileDropdown = document.getElementById("profileDropdown");
+    const profileDropdown = document.getElementById("profileDropdown");
+    const menuProfileBtn = document.getElementById("menuProfileBtn");
+    const menuBookedPcBtn = document.getElementById("menuBookedPcBtn");
+    const menuPricingBtn = document.getElementById("menuPricingBtn");
+
+    const bookingButtons = document.querySelectorAll(".hero-btn.secondary-btn, .hero-btn.primary-btn, .reserve-btn, .btn-book-now");
 
     // Open Modals
-    if (openSignInBtn && signInModal) {
-        openSignInBtn.addEventListener("click", () => signInModal.style.display = "flex");
-    }
-    if (openSignUpBtn && signUpModal) {
-        openSignUpBtn.addEventListener("click", () => signUpModal.style.display = "flex");
-    }
+    if (openSignInBtn && signInModal) openSignInBtn.addEventListener("click", () => signInModal.style.display = "flex");
+    if (openSignUpBtn && signUpModal) openSignUpBtn.addEventListener("click", () => signUpModal.style.display = "flex");
 
     // Close Modals on 'X'
-    if (closeSignIn) closeSignIn.addEventListener("click", () => signInModal.style.display = "none");
-    if (closeSignUp) closeSignUp.addEventListener("click", () => signUpModal.style.display = "none");
+    if (closeSignIn && signInModal) closeSignIn.addEventListener("click", () => signInModal.style.display = "none");
+    if (closeSignUp && signUpModal) closeSignUp.addEventListener("click", () => signUpModal.style.display = "none");
 
     // Switch between Sign In / Sign Up
     if (switchToSignUp) {
         switchToSignUp.addEventListener("click", (e) => {
             e.preventDefault();
-            signInModal.style.display = "none";
-            signUpModal.style.display = "flex";
+            if (signInModal) signInModal.style.display = "none";
+            if (signUpModal) signUpModal.style.display = "flex";
         });
     }
     if (switchToSignIn) {
         switchToSignIn.addEventListener("click", (e) => {
             e.preventDefault();
-            signUpModal.style.display = "none";
-            signInModal.style.display = "flex";
+            if (signUpModal) signUpModal.style.display = "none";
+            if (signInModal) signInModal.style.display = "flex";
         });
     }
 
@@ -102,50 +99,62 @@ const profileDropdown = document.getElementById("profileDropdown");
         if (e.target === signUpModal) signUpModal.style.display = "none";
     });
 
+    // Profile Dropdown Toggle
     if (profileMenuBtn && profileDropdown) {
-    profileMenuBtn.addEventListener("click", (e) => {
-        e.stopPropagation();
-        profileDropdown.classList.toggle("show");
+        profileMenuBtn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            profileDropdown.classList.toggle("show");
+        });
+
+        window.addEventListener("click", () => {
+            profileDropdown.classList.remove("show");
+        });
+    }
+
+    // Menu Item Handlers
+    if (menuProfileBtn) {
+        menuProfileBtn.addEventListener("click", () => {
+            if (profileDropdown) profileDropdown.classList.remove("show");
+            showToast("ACCOUNT SETTINGS", "Opening account settings...", "success");
+        });
+    }
+
+    if (menuBookedPcBtn) {
+        menuBookedPcBtn.addEventListener("click", () => {
+            if (profileDropdown) profileDropdown.classList.remove("show");
+            const bookedPcText = document.getElementById("bookedPcDisplay")?.textContent || "No PC Booked";
+            showToast("RESERVATION STATUS", bookedPcText, "success");
+        });
+    }
+
+    if (menuPricingBtn) {
+        menuPricingBtn.addEventListener("click", () => {
+            if (profileDropdown) profileDropdown.classList.remove("show");
+            const currentTier = document.getElementById("pricingTierDisplay")?.textContent || "Standard Plan";
+            showToast("CURRENT PLAN", `Active Tier: ${currentTier}`, "success");
+        });
+    }
+
+    // Booking Buttons Handler
+    bookingButtons.forEach(button => {
+        button.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            fetch("auth/check_auth.php")
+                .then(res => res.json())
+                .then(data => {
+                    if (data.logged_in) {
+                        window.location.href = "booking/booking.php";
+                    } else {
+                        if (signInModal) signInModal.style.display = "flex";
+                        showToast("AUTHENTICATION REQUIRED", "Please sign in to reserve a PC or tier.", "error");
+                    }
+                })
+                .catch(err => console.error("Error checking auth status:", err));
+        });
     });
 
-    // Close dropdown when clicking outside
-    window.addEventListener("click", () => {
-        profileDropdown.classList.remove("show");
-    });
-}
-
-// Updated Login Check Function
-function checkLoginStatus() {
-    fetch("auth/check_auth.php")
-        .then(res => res.json())
-        .then(data => {
-            const loggedInNav = document.getElementById("loggedInNav");
-            const loggedOutNav = document.getElementById("loggedOutNav");
-
-            if (data.logged_in) {
-                // Hide Sign In/Out, Show Profile Icon
-                if (loggedOutNav) loggedOutNav.style.display = "none";
-                if (loggedInNav) loggedInNav.style.display = "inline-block";
-
-                // Set User Details
-                const userHandle = document.getElementById("userHandleDisplay");
-                const bookedPc = document.getElementById("bookedPcDisplay");
-                const pricingTier = document.getElementById("pricingTierDisplay");
-
-                if (userHandle) userHandle.textContent = "@" + data.username;
-                if (bookedPc) bookedPc.textContent = data.booked_pc || "No PC Booked";
-                if (pricingTier) pricingTier.textContent = data.pricing_tier || "Standard Plan";
-            } else {
-                // Show Sign In/Out Buttons, Hide Profile Icon
-                if (loggedOutNav) loggedOutNav.style.display = "flex";
-                if (loggedInNav) loggedInNav.style.display = "none";
-            }
-        })
-        .catch(err => console.error("Auth status check failed:", err));
-}
-
-
-    // ================= 4. AUTH FORM HANDLERS =================
+    // ================= 3. AUTH FORM HANDLERS =================
     
     // Sign Up Submission
     const signUpForm = document.getElementById("signUpForm");
@@ -203,24 +212,67 @@ function checkLoginStatus() {
                         showToast("LOGGED OUT", "You have been logged out.", "success");
                         checkLoginStatus();
                     }
-                });
+                })
+                .catch(err => console.error("Logout failed:", err));
         });
     }
+
+    // Initialize Auth and Profile Data
+    checkLoginStatus();
 });
 
-
-// ================= HELPER FUNCTIONS =================
+// ================= GLOBAL HELPER FUNCTIONS =================
 
 function checkLoginStatus() {
     fetch("auth/check_auth.php")
         .then(res => res.json())
         .then(data => {
+            const loggedInNav = document.getElementById("loggedInNav");
+            const loggedOutNav = document.getElementById("loggedOutNav");
+            const userHandle = document.getElementById("userHandleDisplay");
             const profileDisplay = document.getElementById("profileUsername");
-            if (profileDisplay) {
-                profileDisplay.textContent = data.logged_in ? data.username : "Guest / Sign In";
+
+            if (data.logged_in) {
+                if (loggedOutNav) loggedOutNav.style.display = "none";
+                if (loggedInNav) loggedInNav.style.display = "inline-block";
+                if (userHandle) userHandle.textContent = "@" + data.username;
+                if (profileDisplay) profileDisplay.textContent = data.username;
+
+                fetchBookingDetails();
+            } else {
+                if (loggedOutNav) loggedOutNav.style.display = "flex";
+                if (loggedInNav) loggedInNav.style.display = "none";
+                if (profileDisplay) profileDisplay.textContent = "Guest / Sign In";
+
+                // Reset booking displays on logout
+                const bookedPc = document.getElementById("bookedPcDisplay");
+                const pricingTier = document.getElementById("pricingTierDisplay");
+                if (bookedPc) bookedPc.textContent = "No PC Booked";
+                if (pricingTier) pricingTier.textContent = "Standard Plan";
             }
         })
         .catch(err => console.error("Auth status check failed:", err));
+}
+
+function fetchBookingDetails() {
+    fetch("booking/my_bookings.php?format=json")
+        .then(res => {
+            if (!res.ok) throw new Error("HTTP error " + res.status);
+            return res.json();
+        })
+        .then(data => {
+            const bookedPc = document.getElementById("bookedPcDisplay");
+            const pricingTier = document.getElementById("pricingTierDisplay");
+
+            if (data.status === "success" && data.latest_booking) {
+                if (bookedPc) bookedPc.textContent = `${data.latest_booking.device_name} (${data.latest_booking.booking_type})`;
+                if (pricingTier) pricingTier.textContent = `${data.latest_booking.pricing_tier} Plan`;
+            } else {
+                if (bookedPc) bookedPc.textContent = "No PC Booked";
+                if (pricingTier) pricingTier.textContent = "Standard Plan";
+            }
+        })
+        .catch(err => console.error("Booking data fetch failed:", err));
 }
 
 function showToast(title, message, type = "success") {
@@ -236,10 +288,10 @@ function showToast(title, message, type = "success") {
 
     if (type === "error") {
         toast.className = "toast-notification error show";
-        toastIcon.textContent = "✕";
+        if (toastIcon) toastIcon.textContent = "✕";
     } else {
         toast.className = "toast-notification success show";
-        toastIcon.textContent = "✓";
+        if (toastIcon) toastIcon.textContent = "✓";
     }
 
     setTimeout(() => {
