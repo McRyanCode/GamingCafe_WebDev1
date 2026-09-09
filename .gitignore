@@ -1,0 +1,17 @@
+# Database configuration with sensitive credentials
+auth/db.php
+db.php
+
+# Environment files
+.env
+
+# Code editor settings
+.idea/
+
+# Operating system generated metadata
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Composer dependencies (if you use it later)
+vendor/
