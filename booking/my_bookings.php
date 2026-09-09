@@ -14,8 +14,8 @@ $username = $_SESSION['username'] ?? 'Gamer';
 $bookings = [];
 
 try {
-    // Parameterized retrieval tied strictly to logged-in session user_id
-    $sql = "SELECT id, device_id, device_type, booking_date, start_time, time_mode, duration_hours, pricing_tier, total_price, status 
+    // Parameterized retrieval (pricing_tier removed from query)
+    $sql = "SELECT id, device_id, device_type, booking_date, start_time, time_mode, duration_hours, total_price, status 
             FROM bookings 
             WHERE user_id = :user_id 
             ORDER BY booking_date DESC, start_time DESC";
@@ -34,9 +34,36 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Bookings - Gamora Gaming Cafe</title>
     <link rel="stylesheet" href="my_bookings.css">
+    <style>
+        /* Top Navigation Link Styling */
+        .top-nav-bar {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .back-home-link {
+            color: #00f5d4;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-block;
+            transition: color 0.2s ease, transform 0.2s ease;
+        }
+
+        .back-home-link:hover {
+            color: #4895ef;
+            transform: translateX(-3px);
+        }
+    </style>
 </head>
 <body>
     <div class="bookings-container">
+        
+        <!-- Top Navigation Bar -->
+        <div class="top-nav-bar">
+            <a href="../index.php" class="back-home-link">&larr; Back to Home</a>
+        </div>
+
         <header class="bookings-header">
             <h1>My Bookings</h1>
             <p>Welcome back, <strong><?php echo htmlspecialchars($username); ?></strong>! Here is your reservation history.</p>
@@ -93,10 +120,6 @@ try {
                                                 : htmlspecialchars($b['duration_hours']) . ' Hour(s)'; 
                                         ?>
                                     </span>
-                                </div>
-                                <div class="detail-item">
-                                    <span class="label">Pricing Tier:</span>
-                                    <span class="tier-badge"><?php echo htmlspecialchars($b['pricing_tier']); ?></span>
                                 </div>
                             </div>
                         </div>

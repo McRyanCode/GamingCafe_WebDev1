@@ -1,406 +1,404 @@
+/* Modern Gaming Cafe Booking Styles */
+:root {
+  --bg-dark: #0a0c14;
+  --card-bg: rgba(22, 27, 46, 0.7);
+  --border-color: rgba(0, 245, 212, 0.2);
+  --accent-cyan: #00f5d4;
+  --accent-purple: #7b2cbf;
+  --text-dim: #a0aab8;
+}
+
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
 }
 
 body {
-    background-color: #0f111a;
-    color: #ffffff;
-    padding-bottom: 140px;
+  background-color: var(--bg-dark);
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  margin: 0;
+  padding: 20px 20px 100px 20px;
 }
 
+/* Header */
 .booking-header {
-    background-color: #16192b;
-    padding: 20px 40px;
-    display: flex;
-    align-items: center;
-    gap: 30px;
-    border-bottom: 2px solid #2a2f4c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 15px;
 }
 
 .back-link {
-    color: #00d2ff;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.back-link:hover {
-    text-decoration: underline;
+  color: var(--accent-cyan);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 .booking-header h1 {
-    font-size: 1.8rem;
+  margin: 0;
+  font-size: 1.8rem;
 }
 
+/* Layout Containers */
 .booking-container {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .device-section, .datetime-section, .time-section, .price-summary-card {
-    margin-bottom: 40px;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 25px;
+  backdrop-filter: blur(10px);
 }
 
 .section-title {
-    font-size: 1.5rem;
-    color: #00d2ff;
-    margin-bottom: 20px;
-    border-left: 4px solid #00d2ff;
-    padding-left: 10px;
+  font-size: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: var(--accent-cyan);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-/* DATE & TIME INPUTS */
-.datetime-grid {
-    display: flex;
-    gap: 20px;
-    background-color: #16192b;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #2a2f4c;
-    max-width: 600px;
-}
-
-.input-group {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    gap: 8px;
-}
-
-.input-group label {
-    font-size: 0.95rem;
-    color: #94a3b8;
-    font-weight: 600;
-}
-
-.custom-input {
-    padding: 10px 14px;
-    background-color: #0f111a;
-    color: #ffffff;
-    border: 2px solid #2d3459;
-    border-radius: 6px;
-    font-size: 1rem;
-    outline: none;
-}
-
-.custom-input:focus {
-    border-color: #00d2ff;
-}
-
-/* DEVICE CARDS */
+/* Device Cards Grid */
 .device-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
 }
 
 .device-card {
-    background-color: #1a1e36;
-    border: 2px solid #2d3459;
-    border-radius: 8px;
-    padding: 15px;
-    position: relative;
-    cursor: pointer;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+  background: rgba(10, 12, 20, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  padding: 16px;
+  position: relative;
+  transition: all 0.25s ease;
+  cursor: pointer;
 }
 
 .device-card:hover {
-    transform: translateY(-4px);
-    border-color: #00d2ff;
+  transform: translateY(-4px);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 6px 20px rgba(0, 245, 212, 0.15);
 }
 
 .device-card.selected {
-    border-color: #00ff88;
-    background-color: #1e293b;
-    box-shadow: 0 0 15px rgba(0, 255, 136, 0.3);
+  border-color: var(--accent-cyan) !important;
+  background: rgba(0, 245, 212, 0.08) !important;
+  box-shadow: 0 0 20px rgba(0, 245, 212, 0.3) !important;
 }
 
-.status-badge {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    padding: 4px 8px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    border-radius: 4px;
-    text-transform: uppercase;
+/* Status Pill */
+.status-pill {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 0.65rem;
+  color: var(--accent-cyan);
+  background: rgba(0, 245, 212, 0.1);
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: bold;
 }
 
-.status-badge.available {
-    background-color: #00ff88;
-    color: #000000;
+.status-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 6px var(--accent-cyan);
 }
 
-.image-wrapper {
-    width: 100%;
-    height: 150px;
-    background-color: #0d0e17;
-    border-radius: 6px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-    overflow: hidden;
-    position: relative;
+/* Image & Spec Badges */
+.station-img-box {
+  width: 100%;
+  height: 120px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  margin-bottom: 15px;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  overflow: hidden;
 }
 
-.device-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.station-img-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.image-fallback {
-    display: none;
-    width: 100%;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    color: #64748b;
-    font-size: 0.85rem;
-    text-align: center;
-    padding: 10px;
-    border: 1px dashed #475569;
+.station-name {
+  margin: 0 0 10px 0;
+  font-size: 1.1rem;
 }
 
-.device-details h3 {
-    font-size: 1.2rem;
-    margin-bottom: 5px;
+.spec-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 15px;
 }
 
-.specs {
-    color: #94a3b8;
-    font-size: 0.85rem;
-    margin-bottom: 15px;
+.spec-tag {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
 }
 
 .select-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #2563eb;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-}
-
-.select-btn:hover {
-    background-color: #1d4ed8;
+  width: 100%;
+  padding: 10px;
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  color: var(--accent-cyan);
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
 .device-card.selected .select-btn {
-    background-color: #00ff88;
-    color: #000000;
+  background: var(--accent-cyan);
+  color: #0a0c14;
 }
 
-/* DURATION & TIME MODE STYLES */
+/* Date, Time & Counter Inputs */
+.datetime-grid {
+  display: flex;
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.custom-input {
+  background: rgba(10, 12, 20, 0.8);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 6px;
+  outline: none;
+}
+
+/* Time Modes & Counters */
 .time-mode-selector {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px;
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
 }
 
 .mode-option {
-    flex: 1;
-    max-width: 250px;
-    cursor: pointer;
+  cursor: pointer;
+  flex: 1;
 }
 
 .mode-option input {
-    display: none;
+  display: none;
 }
 
 .mode-card {
-    display: flex;
-    flex-direction: column;
-    padding: 15px 20px;
-    background-color: #1a1e36;
-    border: 2px solid #2d3459;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-}
-
-.mode-card strong {
-    font-size: 1.1rem;
-    color: #ffffff;
-}
-
-.mode-card small {
-    color: #94a3b8;
-    margin-top: 4px;
+  display: block;
+  padding: 15px;
+  background: rgba(10, 12, 20, 0.6);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  text-align: center;
 }
 
 .mode-option input:checked + .mode-card {
-    border-color: #00d2ff;
-    background-color: #1e293b;
-    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+  border-color: var(--accent-cyan);
+  background: rgba(0, 245, 212, 0.1);
 }
 
-.fixed-hours-wrapper {
-    background-color: #16192b;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #2a2f4c;
-    display: inline-block;
+.mode-card strong {
+  display: block;
+  color: #fff;
 }
 
-.label-text {
-    margin-bottom: 12px;
-    font-weight: 600;
-    color: #e2e8f0;
+.mode-card small {
+  color: var(--text-dim);
 }
 
 .counter-box {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .counter-btn {
-    width: 45px;
-    height: 45px;
-    background-color: #2563eb;
-    color: #ffffff;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.4rem;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
+  width: 36px;
+  height: 36px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  cursor: pointer;
 }
 
-.counter-btn:hover {
-    background-color: #1d4ed8;
+.counter-box input {
+  width: 60px;
+  text-align: center;
+  background: rgba(10, 12, 20, 0.8);
+  border: 1px solid var(--border-color);
+  color: #fff;
+  padding: 8px;
+  border-radius: 6px;
 }
 
-.counter-btn:disabled {
-    background-color: #334155;
-    cursor: not-allowed;
-    opacity: 0.6;
+/* Sticky Selection Bar */
+.selection-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(15, 17, 26, 0.95);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--accent-cyan);
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
 }
 
-#hoursInput {
-    width: 80px;
-    height: 45px;
-    text-align: center;
-    font-size: 1.2rem;
-    font-weight: bold;
-    background-color: #0f111a;
-    color: #00ff88;
-    border: 2px solid #2d3459;
-    border-radius: 6px;
+.summary-details {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--text-dim);
 }
 
-#hoursInput::-webkit-inner-spin-button,
-#hoursInput::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+.summary-details strong {
+  color: var(--accent-cyan);
 }
 
-.open-info-wrapper {
-    background-color: #16192b;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #00d2ff;
-    color: #e2e8f0;
+.divider {
+  color: rgba(255, 255, 255, 0.2);
 }
 
-/* PRICING BREAKDOWN DISPLAY */
-.price-summary-card {
-    background-color: #16192b;
-    padding: 20px 30px;
-    border-radius: 8px;
-    border: 1px solid #2a2f4c;
+.review-btn {
+  background: var(--accent-cyan);
+  color: #0a0c14;
+  border: none;
+  padding: 12px 24px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
 }
 
-.price-details-grid {
-    display: flex;
-    gap: 40px;
+.station-img-box {
+  width: 100%;
+  height: 130px;
+  background-color: rgba(10, 12, 20, 0.8);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.price-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+.device-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Prevents image stretching */
+  display: block;
 }
 
-.price-label {
-    font-size: 1rem;
-    color: #94a3b8;
+.station-img-box {
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Soft border instead of dashed */
 }
 
-.tier-badge {
-    background-color: #2563eb;
-    color: #ffffff;
-    padding: 4px 12px;
-    border-radius: 4px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
+.device-img {
+  width: auto;
+  max-width: 100%;
+  height: 100%;
+  object-fit: contain; /* Keeps transparent PNG aspect ratio sharp without cropping */
 }
 
-.highlight-price {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00ff88;
-}
-
-/* BOOKING SUMMARY STEP CARD */
+/* Container Layout */
+/* Center the container full width and height */
 .summary-wrapper {
-    max-width: 650px;
-    margin: 40px auto;
+    width: 100%;
+    min-height: calc(100vh - 80px); /* Adjusts for top navigation header */
+    display: flex;
+    justify-content: center; /* Horizontally centers card */
+    align-items: center;     /* Vertically centers card */
+    padding: 20px;
+    box-sizing: border-box;
 }
 
+/* Ensure card maintains proper width */
 .summary-card {
-    background-color: #16192b;
-    border: 2px solid #00d2ff;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15);
+    background: rgba(26, 29, 46, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 35px 30px;
+    width: 100%;
+    max-width: 480px; /* Adjust width as needed */
+    margin: 0 auto;  /* Backup horizontal centering */
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+    color: #ffffff;
 }
 
+/* Card Header Text */
 .summary-header {
-    color: #00d2ff;
-    font-size: 1.8rem;
-    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 0 0 6px 0;
+    color: #ffffff;
 }
 
 .summary-subtitle {
-    color: #94a3b8;
-    margin-bottom: 25px;
-    font-size: 0.95rem;
+    color: #a0aab8;
+    font-size: 0.88rem;
+    margin: 0 0 25px 0;
 }
 
+/* Rows & Details Grid */
 .summary-details-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    background-color: #0f111a;
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #2a2f4c;
-    margin-bottom: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    margin-bottom: 25px;
 }
 
 .summary-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 10px;
-    border-bottom: 1px solid #1e293b;
-}
-
-.summary-row:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
+    padding: 8px 0;
+    font-size: 0.92rem;
 }
 
 .summary-label {
-    color: #94a3b8;
-    font-weight: 500;
+    color: #a0aab8;
 }
 
 .summary-value {
@@ -408,103 +406,110 @@ body {
     font-weight: 600;
 }
 
-.highlight-row {
-    margin-top: 10px;
-    padding-top: 15px;
-    border-top: 2px dashed #2d3459;
+/* Pricing Tier Badge */
+.tier-badge {
+    color: #00f5d4;
+    text-transform: uppercase;
+    font-weight: bold;
 }
 
+/* Highlight Total Row */
+.highlight-row {
+    margin-top: 8px;
+    padding-top: 12px;
+    border-top: 1px dashed rgba(255, 255, 255, 0.15);
+}
+
+.highlight-price {
+    color: #00f5d4;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+/* Action Buttons Container */
 .summary-actions {
     display: flex;
-    gap: 15px;
+    gap: 12px;
 }
 
-.btn-primary, .btn-secondary, .review-btn {
-    padding: 12px 24px;
-    font-size: 1rem;
-    font-weight: bold;
-    border-radius: 6px;
-    cursor: pointer;
-    border: none;
-    transition: background-color 0.2s ease;
-}
-
-.btn-primary {
-    background-color: #00ff88;
-    color: #000000;
-    flex: 2;
-}
-
-.btn-primary:hover {
-    background-color: #00cc6a;
-}
-
-.btn-secondary {
-    background-color: #334155;
-    color: #ffffff;
+.summary-actions button {
     flex: 1;
+    padding: 12px 0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+/* Back to Edit Button */
+.btn-secondary {
+    background: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .btn-secondary:hover {
-    background-color: #475569;
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #00f5d4;
+    color: #00f5d4;
 }
 
-.review-btn {
-    background-color: #00d2ff;
-    color: #000000;
+/* Confirm Booking Button */
+.btn-primary {
+    background: #7b2cbf;
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 4px 15px rgba(123, 44, 191, 0.4);
 }
 
-.review-btn:hover {
-    background-color: #00b8e6;
+.btn-primary:hover {
+    background: #9d4edd;
+    box-shadow: 0 6px 20px rgba(157, 78, 221, 0.6);
+    transform: translateY(-1px);
 }
 
-/* BOTTOM BAR */
-.selection-bar {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: #16192b;
-    border-top: 2px solid #2a2f4c;
-    padding: 18px 40px;
-    display: flex;
-    justify-content: space-between;
+/* Base Badge */
+.status-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-flex;
     align-items: center;
-    font-size: 1.1rem;
-    z-index: 100;
+    gap: 5px;
 }
 
-.summary-details {
-    display: flex;
-    align-items: center;
-    gap: 15px;
+/* Status: Available */
+.status-badge.available {
+    background: rgba(0, 245, 212, 0.15);
+    color: #00f5d4;
+    border: 1px solid #00f5d4;
+}
+.status-badge.available::before {
+    content: "•";
+    font-size: 1.2rem;
+    color: #00f5d4;
 }
 
-.summary-details strong {
-    color: #00ff88;
+/* Status: Occupied / Booked */
+.status-badge.occupied {
+    background: rgba(255, 75, 75, 0.15);
+    color: #ff4b4b;
+    border: 1px solid #ff4b4b;
+}
+.status-badge.occupied::before {
+    content: "•";
+    font-size: 1.2rem;
+    color: #ff4b4b;
 }
 
-.divider {
-    color: #475569;
-}
-
-.success-card {
-    border-color: #00ff88;
-    box-shadow: 0 0 20px rgba(0, 255, 136, 0.2);
-}
-
-.success-title {
-    color: #00ff88;
-}
-
-.highlight-id {
-    color: #00d2ff;
-    font-family: monospace;
-    font-size: 1.1rem;
-}
-
-.text-center {
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+/* Disabled Station Card State */
+.station-card.is-occupied {
+    opacity: 0.6;
+    pointer-events: none; /* Prevents selection if already booked */
 }

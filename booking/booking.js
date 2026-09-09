@@ -241,3 +241,48 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 });
+
+function updateStationAvailability() {
+    const selectedDate = document.getElementById('bookingDate').value;
+    const selectedTime = document.getElementById('startTime').value;
+
+    if (!selectedDate || !selectedTime) return;
+
+    fetch(`check_availability.php?date=${selectedDate}&time=${selectedTime}`)
+        .then(res => res.json())
+        .then(data => {
+            const occupiedList = data.occupied_stations || [];
+
+            // Loop through all station elements on screen
+            document.querySelectorAll('.station-card').forEach(card => {
+                const stationId = card.dataset.stationId; // e.g., 'PC 01'
+                const badge = card.querySelector('.status-badge');
+                const selectBtn = card.querySelector('.btn-select-station');
+
+                if (occupiedList.includes(stationId)) {
+                    // Mark as Occupied
+                    badge.textContent = 'OCCUPIED';
+                    badge.className = 'status-badge occupied';
+                    card.classList.add('is-occupied');
+                    if (selectBtn) {
+                        selectBtn.disabled = true;
+                        selectBtn.textContent = 'Unavailable';
+                    }
+                } else {
+                    // Mark as Available
+                    badge.textContent = 'AVAILABLE';
+                    badge.className = 'status-badge available';
+                    card.classList.remove('is-occupied');
+                    if (selectBtn) {
+                        selectBtn.disabled = false;
+                        selectBtn.textContent = `Select ${stationId}`;
+                    }
+                }
+            });
+        })
+        .catch(err => console.error('Error updating availability:', err));
+}
+
+// Trigger update when inputs change
+document.getElementById('bookingDate').addEventListener('change', updateStationAvailability);
+document.getElementById('startTime').addEventListener('change', updateStationAvailability);

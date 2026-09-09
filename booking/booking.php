@@ -18,10 +18,10 @@ if (!isset($_SESSION['user_id'])) {
 
     <header class="booking-header">
         <a href="../index.php" class="back-link">&larr; Back to Home</a>
-        <h1>Select Your Station</h1>
+        <h1>Select Your <span style="color:#00d2ff">Station</span></h1>
     </header>
 
-    <main class="booking-container">
+    <main  class="booking-container">
         
         <!-- SELECTION VIEW -->
         <div id="selectionStep">
@@ -32,81 +32,99 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="device-grid" id="pcGrid">
                     
                     <div class="device-card" data-device-id="PC-01" data-device-type="PC" data-device-name="PC 01">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 01" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 01 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 01</h3>
-                            <p class="specs">RTX 4070 | i7-13700K | 240Hz</p>
-                            <button type="button" class="select-btn">Select PC 01</button>
+                        <div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 01" class="device-img">
+</div>
+                        <h3 class="station-name">PC 01</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 4070</span>
+                            <span class="spec-tag">i7-13700K</span>
+                            <span class="spec-tag">240Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 01</button>
                     </div>
 
                     <div class="device-card" data-device-id="PC-02" data-device-type="PC" data-device-name="PC 02">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 02" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 02 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 02</h3>
-                            <p class="specs">RTX 4070 | i7-13700K | 240Hz</p>
-                            <button type="button" class="select-btn">Select PC 02</button>
+                       <div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
+</div>
+                        <h3 class="station-name">PC 02</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 4070</span>
+                            <span class="spec-tag">i7-13700K</span>
+                            <span class="spec-tag">240Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 02</button>
                     </div>
 
                     <div class="device-card" data-device-id="PC-03" data-device-type="PC" data-device-name="PC 03">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 03" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 03 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 03</h3>
-                            <p class="specs">RTX 3060 | i5-12400F | 144Hz</p>
-                            <button type="button" class="select-btn">Select PC 03</button>
+                    <div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
+</div>
+                        <h3 class="station-name">PC 03</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 3060</span>
+                            <span class="spec-tag">i5-12400F</span>
+                            <span class="spec-tag">144Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 03</button>
                     </div>
 
                     <div class="device-card" data-device-id="PC-04" data-device-type="PC" data-device-name="PC 04">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 04" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 04 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 04</h3>
-                            <p class="specs">RTX 3060 | i5-12400F | 144Hz</p>
-                            <button type="button" class="select-btn">Select PC 04</button>
+                 v<div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
+</div>
+                        <h3 class="station-name">PC 04</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 3060</span>
+                            <span class="spec-tag">i5-12400F</span>
+                            <span class="spec-tag">144Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 04</button>
                     </div>
 
                     <div class="device-card" data-device-id="PC-05" data-device-type="PC" data-device-name="PC 05">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 05" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 05 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 05</h3>
-                            <p class="specs">RTX 3060 | i5-12400F | 144Hz</p>
-                            <button type="button" class="select-btn">Select PC 05</button>
+                    <div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
+</div>
+                        <h3 class="station-name">PC 05</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 3060</span>
+                            <span class="spec-tag">i5-12400F</span>
+                            <span class="spec-tag">144Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 05</button>
                     </div>
 
                     <div class="device-card" data-device-id="PC-06" data-device-type="PC" data-device-name="PC 06">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
-                            <img src="images/pc-placeholder.jpg" alt="PC 06" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH PC 06 IMAGE ]</div>
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
                         </div>
-                        <div class="device-details">
-                            <h3>PC 06</h3>
-                            <p class="specs">RTX 3060 | i5-12400F | 144Hz</p>
-                            <button type="button" class="select-btn">Select PC 06</button>
+                     <div class="station-img-box">
+    <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
+</div>
+                        <h3 class="station-name">PC 06</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">RTX 3060</span>
+                            <span class="spec-tag">i5-12400F</span>
+                            <span class="spec-tag">144Hz</span>
                         </div>
+                        <button type="button" class="select-btn">Select PC 06</button>
                     </div>
 
                 </div>
@@ -118,42 +136,54 @@ if (!isset($_SESSION['user_id'])) {
                 <div class="device-grid" id="consoleGrid">
                     
                     <div class="device-card" data-device-id="Console-01" data-device-type="Console" data-device-name="Console 01">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
+                        </div>
+                        <div class="station-img-box">
                             <img src="images/console-placeholder.jpg" alt="Console 01" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="image-fallback">[ REPLACE WITH CONSOLE 01 IMAGE ]</div>
                         </div>
-                        <div class="device-details">
-                            <h3>Console 01</h3>
-                            <p class="specs">PS5 | 4K OLED TV | 2 Controllers</p>
-                            <button type="button" class="select-btn">Select Console 01</button>
+                        <h3 class="station-name">Console 01</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">PS5</span>
+                            <span class="spec-tag">4K OLED TV</span>
+                            <span class="spec-tag">2 Controllers</span>
                         </div>
+                        <button type="button" class="select-btn">Select Console 01</button>
                     </div>
 
                     <div class="device-card" data-device-id="Console-02" data-device-type="Console" data-device-name="Console 02">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
+                        </div>
+                        <div class="station-img-box">
                             <img src="images/console-placeholder.jpg" alt="Console 02" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="image-fallback">[ REPLACE WITH CONSOLE 02 IMAGE ]</div>
                         </div>
-                        <div class="device-details">
-                            <h3>Console 02</h3>
-                            <p class="specs">PS5 | 4K OLED TV | 2 Controllers</p>
-                            <button type="button" class="select-btn">Select Console 02</button>
+                        <h3 class="station-name">Console 02</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">PS5</span>
+                            <span class="spec-tag">4K OLED TV</span>
+                            <span class="spec-tag">2 Controllers</span>
                         </div>
+                        <button type="button" class="select-btn">Select Console 02</button>
                     </div>
 
                     <div class="device-card" data-device-id="Console-03" data-device-type="Console" data-device-name="Console 03">
-                        <span class="status-badge available">Available</span>
-                        <div class="image-wrapper">
+                        <div class="status-pill">
+                            <span class="status-dot"></span> AVAILABLE
+                        </div>
+                        <div class="station-img-box">
                             <img src="images/console-placeholder.jpg" alt="Console 03" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="image-fallback">[ REPLACE WITH CONSOLE 03 IMAGE ]</div>
                         </div>
-                        <div class="device-details">
-                            <h3>Console 03</h3>
-                            <p class="specs">Xbox Series X | 4K TV | 2 Controllers</p>
-                            <button type="button" class="select-btn">Select Console 03</button>
+                        <h3 class="station-name">Console 03</h3>
+                        <div class="spec-container">
+                            <span class="spec-tag">Xbox Series X</span>
+                            <span class="spec-tag">4K TV</span>
+                            <span class="spec-tag">2 Controllers</span>
                         </div>
+                        <button type="button" class="select-btn">Select Console 03</button>
                     </div>
 
                 </div>
@@ -319,6 +349,8 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             <button type="button" class="review-btn" id="reviewBookingBtn">Review & Proceed &rarr;</button>
         </div>
+
+  
 
     </main>
 

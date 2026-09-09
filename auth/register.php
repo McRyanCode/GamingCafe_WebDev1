@@ -26,8 +26,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(["status" => "error", "message" => "Invalid email address."]);
+    // Step 2: Username Validation
+    if (!preg_match('/[a-zA-Z]/', $username)) {
+        echo json_encode(["status" => "error", "message" => "Username must contain at least one letter."]);
+        exit;
+    }
+
+    // Steps 3 & 4: Gmail Validation
+    $email_parts = explode('@', $email);
+    $email_prefix = $email_parts[0] ?? '';
+    $email_domain = strtolower($email_parts[1] ?? '');
+
+    if ($email_domain !== 'gmail.com' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo json_encode(["status" => "error", "message" => "Please use a valid Gmail address."]);
+        exit;
+    }
+
+    if (!preg_match('/[a-zA-Z]/', $email_prefix)) {
+        echo json_encode(["status" => "error", "message" => "Gmail address must contain at least one letter."]);
+        exit;
+    }
+
+    // Step 5: Password Validation
+    if (strlen($password) < 8) {
+        echo json_encode(["status" => "error", "message" => "Password must be at least 8 characters."]);
+        exit;
+    }
+
+    if (!preg_match('/[a-zA-Z]/', $password)) {
+        echo json_encode(["status" => "error", "message" => "Password must contain at least one letter."]);
+        exit;
+    }
+
+    if (!preg_match('/[0-9]/', $password)) {
+        echo json_encode(["status" => "error", "message" => "Password must contain at least one number."]);
         exit;
     }
 
@@ -37,12 +69,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     try {
-        // Check for existing user
-        $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ? OR email = ? LIMIT 1");
-        $stmt->execute([$username, $email]);
-        
-        if ($stmt->fetch()) {
-            echo json_encode(["status" => "error", "message" => "Username or Email is already taken."]);
+        // Duplicate Username Check
+        $userStmt = $pdo->prepare("SELECT id FROM users WHERE username = ? LIMIT 1");
+        $userStmt->execute([$username]);
+        if ($userStmt->fetch()) {
+            echo json_encode(["status" => "error", "message" => "Username is already taken."]);
+            exit;
+        }
+
+        // Duplicate Gmail Check
+        $emailStmt = $pdo->prepare("SELECT id FROM users WHERE email = ? LIMIT 1");
+        $emailStmt->execute([$email]);
+        if ($emailStmt->fetch()) {
+            echo json_encode(["status" => "error", "message" => "Email is already registered."]);
             exit;
         }
 
@@ -52,7 +91,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $success = $insertStmt->execute([$username, $email, $hashed_password]);
 
         if ($success) {
-            // Automatically assign user session upon successful registration
             $_SESSION['user_id'] = $pdo->lastInsertId();
             $_SESSION['username'] = $username;
 
@@ -64,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     } catch (PDOException $e) {
         http_response_code(500);
-        echo json_encode(["status" => "error", "message" => "Database error: " . $e->getMessage()]);
+        echo json_encode(["status" => "error", "message" => "A server error occurred. Please try again later."]);
         exit;
     }
 }

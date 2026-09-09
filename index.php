@@ -8,8 +8,8 @@ $title = "Gamora's Gaming Cafe";
 <html>
 <head>
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="signIn.css">
     <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="drpdwn/pricingtier.css">
 </head>
 
 <body>
@@ -23,11 +23,11 @@ $title = "Gamora's Gaming Cafe";
         </a>
 
 <nav class="nav-links">
-                <a href="#home">HOME</a>
-                <a href="#pcs">PCs</a>
-                <a href="#rates">RATES</a>
+                <a href="#hero">HOME</a>
+                <a href="#why-choose">PCs</a>
+                <a href="#pricing">RATES</a>
                 <a href="#events">EVENTS</a>
-                <a >CONTACT</a>
+                <a href="#contact">CONTACT</a>
                 <a href="#about">ABOUT US</a>
                 
                 <!-- Auth Controls Wrapper -->
@@ -46,7 +46,7 @@ $title = "Gamora's Gaming Cafe";
 
     <div id="profileDropdown" class="github-dropdown-menu">
   <div class="dropdown-header">
-    <span class="user-handle" id="userHandleDisplay">@gamer</span>
+    <span class="user-handle" id="userHandleDisplay">gamer</span>
     <span class="user-status-badge">ONLINE</span>
   </div>
 
@@ -72,14 +72,6 @@ $title = "Gamora's Gaming Cafe";
     </div>
   </a>
 
-  <!-- Pricing Tier Dynamic Link -->
-<a href="javascript:void(0);" id="menuPricingBtn" class="dropdown-item" onclick="openTierModal()">
-  <span class="item-icon">⚡</span>
-  <div class="item-text">
-    <span class="item-title">Pricing Tier</span>
-    <span class="item-sub" id="pricingTierDisplay">Checking tier...</span>
-  </div>
-</a>
 
 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
 <a href="admin/customers.php" id="menuAdminBtn" class="dropdown-item">
@@ -105,41 +97,15 @@ $title = "Gamora's Gaming Cafe";
         </div> <!-- ADDED: Closes nav-container -->
     </header> <!-- ADDED: Closes site-header -->
 
-    <!-- Pricing Tier Status Modal -->
-<div id="tierModal" class="tier-modal-overlay" style="display:none;">
-  <div class="tier-modal-content">
-    <span class="tier-modal-close" onclick="closeTierModal()">&times;</span>
-    <h2>Your Pricing Tier Status</h2>
-    
-    <div class="tier-status-box">
-      <p class="status-label">Current Active Tier:</p>
-      <h1 id="modalTierBadge">Loading...</h1>
-      <p id="modalTierDesc">Fetching your latest station reservation details...</p>
-    </div>
-
-    <div class="tier-breakdown">
-      <h3>Tier Reference Guide</h3>
-      <ul>
-        <li><strong>BASIC:</strong> Standard gaming up to 2 Hours</li>
-        <li><strong>STANDARD:</strong> Extended gaming (3–4 Hours)</li>
-        <li><strong>PREMIUM:</strong> VIP Gaming Sessions (5+ Hours)</li>
-        <li><strong>OPEN TIME:</strong> Pay-as-you-go flexible sessions</li>
-      </ul>
-    </div>
-
-    <button onclick="closeTierModal()" class="btn-primary" style="width:100%; margin-top:15px;">Close</button>
-  </div>
-</div>
-
     <!-- Main Hero Body -->
-    <div class="hero-body">
+    <div id="hero" class="hero-body">
         <div class="hero-container">
             <div class="hero-content">
                 <h1>WHERE<br><span class="cyan-text">CHAMPIONS</span> ARE BORN.</h1>
                 
                 <div class="hero-buttons">
-                    <a href="booking/booking.php" class="hero-btn primary-btn">BOOK NOW</a>
-                    <a href="booking/booking.php" class="hero-btn secondary-btn">VIEW RATES</a>
+                    <a href="./booking/booking.php" class="custom-hero-btn custom-primary-btn">BOOK NOW</a>
+                    <a href="#pricing" class="custom-hero-btn custom-secondary-btn">VIEW RATES</a>
                 </div>
             </div>
         </div>
@@ -150,7 +116,7 @@ $title = "Gamora's Gaming Cafe";
  <!-- Why Choose Us Section -->
 <section class="why-choose-us">
 
-    <div class="why-choose-container">
+    <div id="why-choose" class="why-choose-container">
 
         <!-- Left Column: Title & Feature Capsules -->
         <div class="why-choose-content">
@@ -259,7 +225,7 @@ $title = "Gamora's Gaming Cafe";
 
     <!-- Price Review -->
    <!-- Pricing Review Section -->
-<section class="pricing">
+<section id="pricing" class="pricing">
 
     <h2><span style="color:#00d2ff">PRICING</span> REVIEW</h2>
 
@@ -270,7 +236,7 @@ $title = "Gamora's Gaming Cafe";
             <h3 class="tier-title">BASIC</h3>
             <p class="duration">1 HOUR</p>
             <div class="price"><span class="currency">₱</span>40</div>
-            <a  class="reserve-btn">RESERVE NOW</a>
+            <a  href="./booking/booking.php" class="reserve-btn">RESERVE NOW</a>
         </div>
 
         <!-- Card 2: Standard -->
@@ -299,7 +265,7 @@ $title = "Gamora's Gaming Cafe";
 
    <!-- Events and Tournaments -->
 <!-- Events and Tournaments Section -->
-<section class="events-section">
+<section id="events" class="events-section">
 
     <!-- Pop-out Peripheral Assets -->
     <img src="keyboard.png" alt="Gaming Keyboard" class="peripheral-keyboard">
@@ -316,7 +282,7 @@ $title = "Gamora's Gaming Cafe";
                 Compete, showcase your skills, and win amazing prizes while connecting with fellow gamers.
             </p>
 
-            <a href="#events" class="view-events-btn">VIEW EVENTS</a>
+            <a href="main/events.php" class="view-events-btn">VIEW EVENTS</a>
         </div>
 
         <!-- Right Media Card -->
@@ -412,11 +378,11 @@ $title = "Gamora's Gaming Cafe";
                 <div class="footer-col">
                     <h3>EXPLORE</h3>
                     <ul>
-                        <li><a href="#home">HOME</a></li>
-                        <li><a href="#pcs">PCs</a></li>
-                        <li><a href="#rates">RATES</a></li>
+                        <li><a href="#hero">HOME</a></li>
+                        <li><a href="#why-choose">PCs</a></li>
+                        <li><a href="#pricing">RATES</a></li>
                         <li><a href="#events">EVENTS</a></li>
-                        <li><a >CONTACT</a></li>
+                        <li><a href="#contact">CONTACT</a></li>
                         <li><a href="#about">ABOUT US</a></li>
                     </ul>
                 </div>
@@ -487,7 +453,7 @@ $title = "Gamora's Gaming Cafe";
       <div class="form-group">
         <div class="label-row">
           <label for="loginPassword">Password</label>
-          <a href="#" class="forgot-link">Forgot password?</a>
+          <a href="auth/forgot_password.php" class="forgot-link">Forgot password?</a>
         </div>
         <input type="password" id="loginPassword" name="password" required>
       </div>
@@ -579,9 +545,23 @@ $title = "Gamora's Gaming Cafe";
     </div>
 </div>
 
-<?php include 'signIn.php'; ?>
+<<script>
+document.addEventListener('DOMContentLoaded', function() {
+    fetch('../booking/get_active_tier.php')
+        .then(res => res.json())
+        .then(data => {
+            if (data.success && data.tier) {
+                const tierElement = document.getElementById('current-active-tier');
+                if (tierElement) {
+                    tierElement.textContent = data.tier;
+                }
+            }
+        })
+        .catch(err => console.error('Error fetching tier:', err));
+});
+</script>
 <script src="index.js"></script>
-<script src="signIn.js"></script>
+<?php include_once 'drpdwn/pricingtier.php'; ?>
 
 </body>
 </html>

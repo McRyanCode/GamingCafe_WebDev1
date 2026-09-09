@@ -66,7 +66,7 @@ if ($time_mode === 'Open') {
 
    
  try {
-    // 3. Double-Booking Overlap Check (Positional Parameters)
+    // 3. Double-Booking Overlap Check
     $overlapSql = "SELECT COUNT(*) FROM bookings 
                    WHERE device_id = ? 
                      AND booking_date = ? 
@@ -100,7 +100,7 @@ if ($time_mode === 'Open') {
         exit();
     }
 
-    // 4. Persistence
+    // 4. Database Persistence (Uses calculated server-side variables)
     $sql = "INSERT INTO bookings (user_id, device_id, device_type, booking_date, start_time, time_mode, duration_hours, pricing_tier, total_price, status) 
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, 'Confirmed')";
 
@@ -132,6 +132,7 @@ if ($time_mode === 'Open') {
         'pricing_tier' => $pricing_tier,
         'total_price'  => '₱' . number_format($total_price, 2)
     ]);
+
 } catch (PDOException $e) {
     http_response_code(500);
     echo json_encode([

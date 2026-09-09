@@ -136,24 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Booking Buttons Handler
-    bookingButtons.forEach(button => {
-        button.addEventListener("click", (e) => {
-            e.preventDefault();
-
-            fetch("auth/check_auth.php")
-                .then(res => res.json())
-                .then(data => {
-                    if (data.logged_in) {
-                        window.location.href = "booking/booking.php";
-                    } else {
-                        if (signInModal) signInModal.style.display = "flex";
-                        showToast("AUTHENTICATION REQUIRED", "Please sign in to reserve a PC or tier.", "error");
-                    }
-                })
-                .catch(err => console.error("Error checking auth status:", err));
-        });
+bookingButtons.forEach(button => {
+    button.addEventListener("click", function(e) {
+        e.preventDefault();
+        
+        // FIX: Route correctly to the booking page inside the booking folder
+        window.location.href = "./booking/booking.php";
     });
-
+});
     // ================= 3. AUTH FORM HANDLERS =================
     
     // Sign Up Submission
@@ -235,7 +225,7 @@ function checkLoginStatus() {
             if (data.logged_in) {
                 if (loggedOutNav) loggedOutNav.style.display = "none";
                 if (loggedInNav) loggedInNav.style.display = "inline-block";
-                if (userHandle) userHandle.textContent = "@" + data.username;
+                if (userHandle) userHandle.textContent = data.username;
                 if (profileDisplay) profileDisplay.textContent = data.username;
 
                 fetchBookingDetails();
@@ -326,3 +316,10 @@ function openTierModal() {
 function closeTierModal() {
     document.getElementById("tierModal").style.display = "none";
 }
+
+// document.querySelector('a[href="#pricing"]').addEventListener('click', function(e) {
+//     e.preventDefault();
+//     document.querySelector('#pricing').scrollIntoView({
+//         behavior: 'smooth'
+//     });
+// });

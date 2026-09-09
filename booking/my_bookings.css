@@ -212,3 +212,22 @@ body {
     margin-top: 30px;
     text-align: right;
 }
+
+.top-nav-bar {
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.back-home-link {
+    color: #00f5d4;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-block;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-home-link:hover {
+    color: #4895ef;
+    transform: translateX(-3px);
+}
