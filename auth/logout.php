@@ -21,7 +21,7 @@ if (ini_get("session.use_cookies")) {
 // 3. Destroy the server-side session
 session_destroy();
 
-header('Content-Type: application/json');
-echo json_encode(["status" => "success", "message" => "Logged out successfully."]);
+// 4. Redirect back to the home page
+header("Location: ../index.php");
 exit();
 ?>

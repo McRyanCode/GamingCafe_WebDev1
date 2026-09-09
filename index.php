@@ -73,14 +73,15 @@ $title = "Gamora's Gaming Cafe";
 
 
 <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
-<a href="admin/customers.php" id="menuAdminBtn" class="dropdown-item">
-  <span class="item-icon">🛠️</span>
-  <div class="item-text">
-    <span class="item-title" style="color: #00f5d4;">Admin Area</span>
-    <span class="item-sub">Manage Customers</span>
-  </div>
-</a>
+    <a href="admin/customers.php" id="menuAdminBtn" class="dropdown-item">
+      <span class="item-icon">🛠️</span>
+      <div class="item-text">
+        <span class="item-title" style="color: #00f5d4;">Admin Area</span>
+        <span class="item-sub">Manage Customers</span>
+      </div>
+    </a>
 <?php endif; ?>
+
 
   <div class="dropdown-divider"></div>
 

@@ -121,26 +121,22 @@ body {
 
 /* Image & Spec Badges */
 .station-img-box {
-  width: 100%;
-  height: 120px;
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 25px;
-  margin-bottom: 15px;
-  color: var(--text-dim);
-  font-size: 0.8rem;
-  overflow: hidden;
+    width: 100%;
+    height: 140px; /* Adjust height if needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #0b0f15; /* Blends letterboxing with your dark theme */
+    border-radius: 6px;
+    margin-bottom: 12px;
 }
 
-.station-img-box img {
+/* .station-img-box img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
+} */
 
 .station-name {
   margin: 0 0 10px 0;
@@ -308,7 +304,7 @@ body {
   cursor: pointer;
 }
 
-.station-img-box {
+/* .station-img-box {
   width: 100%;
   height: 130px;
   background-color: rgba(10, 12, 20, 0.8);
@@ -319,27 +315,26 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .device-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; /* Prevents image stretching */
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Scales the image to fit entirely without cropping */
 }
 
-.station-img-box {
+/* .station-img-box {
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid rgba(255, 255, 255, 0.05); /* Soft border instead of dashed */
-}
+ */
 
-.device-img {
+/* .device-img {
   width: auto;
   max-width: 100%;
   height: 100%;
   object-fit: contain; /* Keeps transparent PNG aspect ratio sharp without cropping */
-}
 
+ */
 /* Container Layout */
 /* Center the container full width and height */
 .summary-wrapper {
