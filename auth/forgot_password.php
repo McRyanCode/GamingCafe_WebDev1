@@ -129,7 +129,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <button type="submit" class="btn-submit">Continue</button>
     </form>
 
-    <a href="/login.php" class="back-link">&larr; Back to Login</a>
+    <a href="login.php" class="back-link">&larr; Back to Login</a>
 </div>
 
 <script>

@@ -33,7 +33,7 @@ if (!isset($_SESSION['user_id'])) {
                     
                     <div class="device-card" data-device-id="PC-01" data-device-type="PC" data-device-name="PC 01">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                         <div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 01" class="device-img">
@@ -49,7 +49,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="PC-02" data-device-type="PC" data-device-name="PC 02">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                        <div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
@@ -65,7 +65,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="PC-03" data-device-type="PC" data-device-name="PC 03">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                     <div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
@@ -81,7 +81,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="PC-04" data-device-type="PC" data-device-name="PC 04">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                  v<div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
@@ -97,7 +97,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="PC-05" data-device-type="PC" data-device-name="PC 05">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                     <div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
@@ -113,7 +113,7 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="PC-06" data-device-type="PC" data-device-name="PC 06">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                      <div class="station-img-box">
     <img src="../image_GamingCafe/pc.png" alt="PC 04" class="device-img">
@@ -137,11 +137,12 @@ if (!isset($_SESSION['user_id'])) {
                     
                     <div class="device-card" data-device-id="Console-01" data-device-type="Console" data-device-name="Console 01">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                         <div class="station-img-box">
-                            <img src="images/console-placeholder.jpg" alt="Console 01" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH CONSOLE 01 IMAGE ]</div>
+                            <img src="../image_GamingCafe/ps5.png" alt="Console 01" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            
+                            
                         </div>
                         <h3 class="station-name">Console 01</h3>
                         <div class="spec-container">
@@ -154,15 +155,15 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="Console-02" data-device-type="Console" data-device-name="Console 02">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                         <div class="station-img-box">
-                            <img src="images/console-placeholder.jpg" alt="Console 02" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH CONSOLE 02 IMAGE ]</div>
+                            <img src="../image_GamingCafe/swtch.png" alt="Console 02" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            
                         </div>
                         <h3 class="station-name">Console 02</h3>
                         <div class="spec-container">
-                            <span class="spec-tag">PS5</span>
+                            <span class="spec-tag">SWITCH 2</span>
                             <span class="spec-tag">4K OLED TV</span>
                             <span class="spec-tag">2 Controllers</span>
                         </div>
@@ -171,11 +172,11 @@ if (!isset($_SESSION['user_id'])) {
 
                     <div class="device-card" data-device-id="Console-03" data-device-type="Console" data-device-name="Console 03">
                         <div class="status-pill">
-                            <span class="status-dot"></span> AVAILABLE
+                            
                         </div>
                         <div class="station-img-box">
-                            <img src="images/console-placeholder.jpg" alt="Console 03" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                            <div class="image-fallback">[ REPLACE WITH CONSOLE 03 IMAGE ]</div>
+                            <img src="../image_GamingCafe/Xbox.png" alt="Console 03" class="device-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            
                         </div>
                         <h3 class="station-name">Console 03</h3>
                         <div class="spec-container">

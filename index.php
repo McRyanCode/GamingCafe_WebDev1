@@ -55,7 +55,7 @@ $title = "Gamora's Gaming Cafe";
   <!-- Profile / Account Settings Trigger -->
   <!-- Profile Link (Opens Account Settings / User Info) -->
 <a href="drpdwn/profile.php" id="menuProfileBtn" class="dropdown-item">
-  <span class="item-icon">👤</span>
+  
   <div class="item-text">
     <span class="item-title">Profile</span>
     <span class="item-sub">Manage account</span>
@@ -65,10 +65,9 @@ $title = "Gamora's Gaming Cafe";
 
   <!-- Booked PC / Station Reservation Link -->
   <a href="booking/my_bookings.php" id="menuBookedPcBtn" class="dropdown-item">
-    <span class="item-icon">🖥️</span>
+    
     <div class="item-text">
       <span class="item-title">Booked PC</span>
-      <span class="item-sub" id="bookedPcDisplay">No PC Booked</span>
     </div>
   </a>
 
@@ -87,7 +86,6 @@ $title = "Gamora's Gaming Cafe";
 
   <!-- Sign Out Trigger -->
   <button type="button" id="logoutBtn" class="dropdown-item logout-item">
-    <span class="item-icon">🚪</span>
     <span class="item-title">Sign out</span>
   </button>
 </div>
@@ -340,7 +338,7 @@ $title = "Gamora's Gaming Cafe";
             </div>
 
             <p class="about-description">
-                <span class="highlight-cyan">Gaming Cafe</span> is a modern gaming space where players can enjoy high-performance gaming, connect with friends, and become part of a welcoming gaming community. More than just a place to play, GG's Gaming Cafe is designed to provide a comfortable, exciting, and inclusive environment for gamers of all skill levels.
+                <span class="highlight-cyan">Gamora's Gaming Cafe</span> is a modern gaming space where players can enjoy high-performance gaming, connect with friends, and become part of a welcoming gaming community. More than just a place to play, Gamora's Gaming Cafe is designed to provide a comfortable, exciting, and inclusive environment for gamers of all skill levels.
             </p>
         </div>
 
@@ -391,8 +389,8 @@ $title = "Gamora's Gaming Cafe";
                 <div class="footer-col">
                     <h3>LEGAL</h3>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms & Conditions</a></li>
+                        <li><a href="Terms & Condition/privacy.php">Privacy Policy</a></li>
+                        <li><a href="Terms & Condition/terms.php">Terms & Conditions</a></li>
                     </ul>
                 </div>
 
@@ -400,10 +398,10 @@ $title = "Gamora's Gaming Cafe";
                 <div class="footer-col">
                     <h3>FOLLOW US</h3>
                     <ul>
-                        <li><a href="#">Facebook</a></li>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">TikTok</a></li>
-                        <li><a href="#">Discord</a></li>
+                        <li><a href="https://www.youtube.com/">Facebook</a></li>
+                        <li><a href="https://www.instagram.com/">Instagram</a></li>
+                        <li><a href="https://www.tiktok.com/">TikTok</a></li>
+                        <li><a href="https://discord.gg/">Discord</a></li>
                     </ul>
                 </div>
 
@@ -418,10 +416,10 @@ $title = "Gamora's Gaming Cafe";
             <p>© 2026 GGs Gaming Cafe. All Rights Reserved</p>
             
             <div class="social-icons">
-                <a href="#"><img src="image_GamingCafe/discord-icon.png" alt="Discord"></a>
-                <a href="#"><img src="image_GamingCafe/facebook-icon.png" alt="Facebook"></a>
-                <a href="#"><img src="image_GamingCafe/x-icon.png" alt="X"></a>
-                <a href="#"><img src="image_GamingCafe/tiktok-icon.png" alt="TikTok"></a>
+                <a href="https://discord.gg/"><img src="image_GamingCafe/discord-icon.png" alt="Discord"></a>
+                <a href=""><img src="image_GamingCafe/facebook-icon.png" alt="Facebook"></a>
+                <a href="https://twitter.com/"><img src="image_GamingCafe/x-icon.png" alt="X"></a>
+                <a href="https://www.tiktok.com/"><img src="image_GamingCafe/tiktok-icon.png" alt="TikTok"></a>
             </div>
         </div>
 

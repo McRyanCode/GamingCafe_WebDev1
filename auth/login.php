@@ -111,7 +111,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
     alertMsg.style.display = 'none';
 
     try {
-        const response = await fetch('login.php', {
+       const response = await fetch('', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ login_input: loginInput, password: password })
@@ -124,7 +124,7 @@ document.getElementById('loginForm').addEventListener('submit', async function(e
             alertMsg.textContent = data.message;
             alertMsg.style.display = 'block';
             setTimeout(() => {
-                window.location.href = '/Gamora%27s%20Gaming%20Cafe/profile.php';
+                window.location.href = '../drpdwn/profile.php';
             }, 1000);
         
         
